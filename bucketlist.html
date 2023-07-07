@@ -1,0 +1,159 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bucketlist | TravelTracker</title>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css' rel='stylesheet' />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div id="header-container"></div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="row">
+            <!-- First column -->
+            <div class="col s3">
+                <h5>My Adventures</h5>
+                <ul id="list_area" class="collection">
+                    <!-- List items are appended here -->
+                </ul>
+                <div class="input-field col s12">
+                    <select id="dropdown">
+                        <option value="" disabled selected>Choose Category</option>
+                        <option value="activities">Activities</option>
+                        <option value="adventure">Adventure</option>
+                        <option value="beach">Beach</option>
+                        <option value="camping">Camping</option>
+                        <option value="cultural-events">Cultural Events</option>
+                        <option value="education">Education</option>
+                        <option value="festivals-events">Festivals and Events</option>
+                        <option value="fitness">Fitness</option>
+                        <option value="food-drinks">Food and Drinks</option>
+                        <option value="hiking">Hiking</option>
+                        <option value="historical-landmarks">Historical Landmarks</option>
+                        <option value="islands">Islands</option>
+                        <option value="museums-art-galleries">Museums & Art Galleries</option>
+                        <option value="natural-wonders">Natural Wonders</option>
+                        <option value="nightlife">Nightlife</option>
+                        <option value="outdoors">Outdoors</option>
+                        <option value="restaurants">Restaurants</option>
+                        <option value="road-trips">Road Trips</option>
+                        <option value="skills">Skills</option>
+                        <option value="spas">Spas</option>
+                        <option value="sports">Sports</option>
+                        <option value="travel-destinations">Travel Destinations</option>
+                        <option value="volunteer-work">Volunteer Work</option>
+                        <option value="water-activities">Water Activities</option>
+                        <option value="wellness-activities">Wellness Activities</option>
+                        <option value="wildlife">Wildlife</option>
+                    </select>
+                    <label>List Selection</label>
+                </div>
+                <button id="add_button" class="btn waves-effect waves-light" type="submit" name="action">Add
+                    <i class="material-icons right">send</i>
+                </button>
+            </div>
+            <!-- Second column -->
+            <div class="col s9">
+                <h5>Planning</h5>
+                <div id='map' style='width: 600px; height: 300px;'></div>
+                <script>
+                    mapboxgl.accessToken = 'pk.eyJ1IjoibGlnaHRvZnR3ZWx2ZSIsImEiOiJjbGpxOHR4NzkwM2RnM25waWEyaG42ejg0In0.qsjplmLPp4Czu4Wt3jeccQ';
+                    const map = new mapboxgl.Map({
+                        container: 'map', // container ID
+                        style: 'mapbox://styles/mapbox/streets-v12', // style URL
+                        center: [-74.5, 40], // starting position [lng, lat]
+                        zoom: 9, // starting zoom
+                    });
+                </script>
+                <div class="input-field">
+                    <input id="title" type="text">
+                    <label for="title" class="active">Title</label>
+                </div>
+                <div class="input-field">
+                    <input id="address" type="text">
+                    <label for="address" class="active">Address</label>
+                </div>
+                <div class="input-field">
+                    <input id="memos" type="text">
+                    <label for="memos" class="active">Memos</label>
+                </div>
+                <p>
+                    <label>
+                        <input id="tickets_needed" type="checkbox">
+                        <span>Tickets Needed</span>
+                    </label>
+                </p>
+                <p>
+                    <label>
+                        <input id="completed" type="checkbox">
+                        <span>Completed</span>
+                    </label>
+                </p>
+                <div class="input-field">
+                    <input id="budget" type="number">
+                    <label for="budget" class="active">Budget</label>
+                </div>
+                <p>
+                    <label>
+                        <input id="budget_toggle" type="checkbox">
+                        <span>Show/Hide Budget</span>
+                    </label>
+                </p>
+                <div class="input-field">
+                    <select id="category">
+                        <option value="" disabled selected>Choose Category</option>
+                        <option value="activities">Activities</option>
+                        <option value="adventure">Adventure</option>
+                        <option value="beach">Beach</option>
+                        <option value="camping">Camping</option>
+                        <option value="cultural-events">Cultural Events</option>
+                        <option value="education">Education</option>
+                        <option value="festivals-events">Festivals and Events</option>
+                        <option value="fitness">Fitness</option>
+                        <option value="food-drinks">Food and Drinks</option>
+                        <option value="hiking">Hiking</option>
+                        <option value="historical-landmarks">Historical Landmarks</option>
+                        <option value="islands">Islands</option>
+                        <option value="museums-art-galleries">Museums & Art Galleries</option>
+                        <option value="natural-wonders">Natural Wonders</option>
+                        <option value="nightlife">Nightlife</option>
+                        <option value="outdoors">Outdoors</option>
+                        <option value="restaurants">Restaurants</option>
+                        <option value="road-trips">Road Trips</option>
+                        <option value="skills">Skills</option>
+                        <option value="spas">Spas</option>
+                        <option value="sports">Sports</option>
+                        <option value="travel-destinations">Travel Destinations</option>
+                        <option value="volunteer-work">Volunteer Work</option>
+                        <option value="water-activities">Water Activities</option>
+                        <option value="wellness-activities">Wellness Activities</option>
+                        <option value="wildlife">Wildlife</option>
+                    </select>
+                    <label for="category">Category</label>
+                </div>
+                <button id="save_button" class="btn waves-effect waves-light" type="submit" name="action">Save
+                    <i class="material-icons right">save</i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $('#header-container').load('header.html');
+        });
+    </script>
+    <script src="assets/js/script.js"></script>
+</body>
+
+
+</html>

@@ -1,0 +1,137 @@
+:root {
+    --white: #fff;
+    --black: #000000;
+    --accent: #f64c72;
+    --main: #2f2fa2;
+    --dpurple: #553d67;
+    --mauve: #99738E;
+    --dark: #242582;
+    text-decoration: none;
+}
+
+body {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+}
+
+.custom-icon {
+    padding-left: 30px;
+}
+
+.keyFeaturesTitle {
+    font-size: 50px;
+    margin-bottom: 130px;
+}
+
+.keyFeaturesWriteup {
+    background-color: #ffffffc3;
+}
+
+.hero-container {
+    width: 100%;
+    margin: 0 auto;
+    height: 700px;
+}
+
+body {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+}
+
+nav {
+    background-color: var(--main);
+    color: var(--white);
+}
+
+img h1 {
+    font-size: 36px;
+}
+
+h2 {
+    font-size: 28px;
+}
+
+h3 {
+    font-size: 24px;
+}
+
+.top-picks {
+    margin: auto 0;
+    height: auto;
+}
+
+footer.page-footer {
+    background-color: var(--main);
+}
+
+@media (max-width: 600px) {
+    .keyFeaturesSection {
+        display: none;
+    }
+}
+
+/* Custom Stylesheet */
+/**
+ * Use this file to override Materialize files so you can update
+ * the core Materialize files in the future
+ *
+ * Made By MaterializeCSS.com
+ */
+
+nav ul a,
+nav .brand-logo {
+    color: var(--white);
+}
+
+p {
+    line-height: 2rem;
+}
+
+.sidenav-trigger {
+    color: var(--accent);
+}
+
+.parallax-container {
+    min-height: 600px;
+    line-height: 0;
+    height: auto;
+    color: var(--black);
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.parallax-container .section {
+    width: 100%;
+}
+
+@media only screen and (max-width : 992px) {
+    .parallax-container .section {
+        position: absolute;
+        top: 40%;
+    }
+
+    #index-banner .section {
+        top: 10%;
+    }
+}
+
+@media only screen and (max-width : 600px) {
+    #index-banner .section {
+        top: 0;
+    }
+}
+
+.icon-block {
+    padding: 0 15px;
+}
+
+.icon-block .material-icons {
+    font-size: inherit;
+}
+
+footer.page-footer {
+    margin: 0;
+}
