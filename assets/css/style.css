@@ -1,13 +1,22 @@
 :root {
     --white: #fff;
     --black: #000000;
-    --accent: #f64c72;
-    --main: #2f2fa2;
-    --dpurple: #553d67;
-    --mauve: #99738E;
-    --dark: #242582;
+    --accent: #9ae312;
+    --main: #392A27;
+    --dpurple: #B7BCAE;
+    --mauve: #B0A88E;
+    --dark: #444343;
+    --grey: #696965;
     text-decoration: none;
 }
+
+/* --white: #fff;
+--black: #000000;
+--accent: #f64c72;
+--main: #2f2fa2;
+--dpurple: #553d67;
+--mauve: #99738E;
+--dark: #242582; */
 
 body {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -18,21 +27,6 @@ body {
 
 .custom-icon {
     padding-left: 30px;
-}
-
-.keyFeaturesTitle {
-    font-size: 50px;
-    margin-bottom: 130px;
-}
-
-.keyFeaturesWriteup {
-    background-color: #ffffffc3;
-}
-
-.hero-container {
-    width: 100%;
-    margin: 0 auto;
-    height: 700px;
 }
 
 body {
@@ -56,6 +50,66 @@ h3 {
     font-size: 24px;
 }
 
+.hero-container {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.parallax-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.parallax-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 600px;
+    margin: 0;
+    position: relative;
+}
+
+.parallax-content {
+    color: var(--white);
+    text-align: center;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.keyFeaturesContainer {
+    padding: 20px;
+    margin: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.keyFeaturesTitle {
+    padding: 20px;
+    font-size: 50px;
+    margin-bottom: 30px;
+    background-color: #B0A88Ed6;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.keyFeaturesWriteup {
+    padding: 20px;
+    background-color: #B0A88Ed6;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+@media only screen and (min-width: 993px) {
+    .parallax-content {
+        height: 500px;
+    }
+}
+
 .top-picks {
     margin: auto 0;
     height: auto;
@@ -65,11 +119,6 @@ footer.page-footer {
     background-color: var(--main);
 }
 
-@media (max-width: 600px) {
-    .keyFeaturesSection {
-        display: none;
-    }
-}
 
 /* Custom Stylesheet */
 /**
@@ -93,7 +142,6 @@ p {
 }
 
 .parallax-container {
-    min-height: 600px;
     line-height: 0;
     height: auto;
     color: var(--black);
