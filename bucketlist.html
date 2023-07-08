@@ -64,7 +64,9 @@
             <!-- Second column -->
             <div class="col s9">
                 <h5>Planning</h5>
-                <div id='map' style='width: 600px; height: 300px;'></div>
+                
+                <div id='map' style=' height: 300px;'>
+                </div>
                 <script>
                     mapboxgl.accessToken = 'pk.eyJ1IjoibGlnaHRvZnR3ZWx2ZSIsImEiOiJjbGpxOHR4NzkwM2RnM25waWEyaG42ejg0In0.qsjplmLPp4Czu4Wt3jeccQ';
                     const map = new mapboxgl.Map({
@@ -86,6 +88,16 @@
                     <input id="memos" type="text">
                     <label for="memos" class="active">Memos</label>
                 </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input type="text" id="start-date" class="datepicker">
+                        <label for="start-date">Start Date</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input type="text" id="end-date" class="datepicker">
+                        <label for="end-date">End Date</label>
+                    </div>
+                </div>
                 <p>
                     <label>
                         <input id="tickets_needed" type="checkbox">
@@ -98,6 +110,7 @@
                         <span>Completed</span>
                     </label>
                 </p>
+                
                 <div class="input-field">
                     <input id="budget" type="number">
                     <label for="budget" class="active">Budget</label>
