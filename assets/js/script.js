@@ -153,6 +153,8 @@ document.getElementById('search').appendChild(geocoder.onAdd(map));
 
 geocoder.on('result', function(e) {
   map.flyTo({center: e.result.center, zoom: 12}); // Zoom to the selected location with a zoom level of 12
+  populateTitleAndAddress(e.result);
+  clearAutocompleteDropdown();
 });
 
 geocoder.on('results', function(e) {
@@ -167,7 +169,7 @@ geocoder.on('results', function(e) {
       item.textContent = result.place_name;
       item.addEventListener('click', function() {
         geocoder.query(result.place_name);
-        dropdown.innerHTML = '';
+        clearAutocompleteDropdown();
       });
       dropdown.appendChild(item);
     });
@@ -179,7 +181,27 @@ document.getElementById('search').addEventListener('input', function() {
   if (input.length >= geocoder.options.minLength) {
     geocoder.query(input);
   } else {
-    document.getElementById('autocomplete-dropdown').innerHTML = '';
+    clearAutocompleteDropdown();
   }
 });
+
+function populateTitleAndAddress(result) {
+  var titleInput = document.getElementById('title');
+  var addressInput = document.getElementById('address');
+
+  var title = '';
+  var address = '';
+
+  if (result.place_name) {
+    title = result.place_name;
+    address = result.place_name;
+  }
+
+  titleInput.value = title;
+  addressInput.value = address;
+}
+
+function clearAutocompleteDropdown() {
+  document.getElementById('autocomplete-dropdown').innerHTML = '';
+}
 // Ending of attached the script for the map
