@@ -78,6 +78,9 @@ $(document).ready(function () {
     $('#memos').val(bucket.memos);
     $('#budget').val(bucket.budget);
 
+    // set the dates
+    $('#start-date').val(bucket.startdate);
+    $('#end-date').val(bucket.enddate);
     // Set checkbox status
     $('#tickets_needed').prop('checked', bucket.ticketsNeeded);
     $('#completed').prop('checked', bucket.completed);
@@ -101,6 +104,8 @@ $(document).ready(function () {
     var completed = $("#completed").prop("checked");
     var budget = $("#budget").val();
     var category = $("#category").val();
+    var startdate = $("#start-date").val();
+    var enddate = $("#end-date").val();
 
     var data = {
       title: title,
@@ -109,7 +114,9 @@ $(document).ready(function () {
       tickets_needed: tickets_needed,
       completed: completed,
       budget: budget,
-      category: category
+      category: category,
+      startdate: startdate,
+      enddate: enddate
     };
 
     var key = new Date().getTime().toString(); // used to generate a unique key so that each item in local storage has a unique identifier using the current time.
@@ -133,6 +140,62 @@ $(document).ready(function () {
       $("#budget").hide();
     }
   });
+
+  // Calendar: Capture the start and end date of the plan
+    
+    // Capture today's date.
+    var currentDate = new Date();
+
+    // Initialize the start date picker
+    var startDatePicker = $('#start-date').datepicker({
+      autoClose: true,
+      format: 'mm-dd-yyyy',
+      minDate: currentDate,
+      onSelect: function(date) {
+        // Allow the end date calendar to start one more day than selected start date
+        if (date) {
+          var startDate = new Date(date);
+          startDate.setDate(startDate.getDate() + 1);
+          updateEndDatePicker(startDate);
+        }
+      }
+    }).on('change', function() {
+      // For any change in the start date, update the end date picker
+      var startDate = new Date($(this).val());
+      if (startDate && !isNaN(startDate.getTime())) {
+        startDate.setDate(startDate.getDate() + 1);
+        updateEndDatePicker(startDate);
+      } else {
+        endDatePicker.prop('disabled', true).val('');
+      }
+    });
+
+    // Start the end date picker disabled for input
+    var endDatePicker = $('#end-date').prop('disabled', true);
+
+    // Initialize the end date picker based on the date thats passed, and enable the date picker input box
+    function updateEndDatePicker(date) {
+
+      if (endDatePicker.initialized) {
+        endDatePicker.datepicker('destroy');
+      }
+      // Initialize the end date picker with the calendar starting from the date (Start Date) that is selected
+      endDatePicker.datepicker({
+        autoClose: true,
+        format: 'mm-dd-yyyy',
+        minDate: date
+      });
+
+      // Enable the end date input box 
+      endDatePicker.prop('disabled', false);
+      endDatePicker.initialized = true;
+      
+      // Change the end date, if the start date is beyond end date
+      var endDate = new Date($(endDatePicker).val());
+      if (date > endDate) {
+        $(endDatePicker).val(dayjs(date).format('MM-DD-YYYY'));
+      }
+    }
 });
 
 // Start of the attached the script for the map
