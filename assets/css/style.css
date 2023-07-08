@@ -1,16 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=Merriweather:wght@300&display=swap');
+
 :root {
     --white: #fff;
     --black: #000000;
-    --accent: #f64c72;
-    --main: #2f2fa2;
-    --dpurple: #553d67;
-    --mauve: #99738E;
-    --dark: #242582;
+    --accent: #B4D330;
+    --main: #04566E;
+    --dpurple: #D8DFE9;
+    --dark: #022831;
+    --grey: #022831;
     text-decoration: none;
 }
 
 body {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: 'Merriweather', serif;
     font-size: 16px;
     margin: 0;
     padding: 0;
@@ -20,28 +22,17 @@ body {
     padding-left: 30px;
 }
 
-.keyFeaturesTitle {
-    font-size: 50px;
-    margin-bottom: 130px;
-}
-
-.keyFeaturesWriteup {
-    background-color: #ffffffc3;
-}
-
-.hero-container {
-    width: 100%;
-    margin: 0 auto;
-    height: 700px;
-}
-
-body {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
-}
-
 nav {
     background-color: var(--main);
     color: var(--white);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-family: 'Lato', sans-serif;
 }
 
 img h1 {
@@ -50,26 +41,190 @@ img h1 {
 
 h2 {
     font-size: 28px;
+    margin: 0;
 }
 
 h3 {
     font-size: 24px;
 }
 
+.hero-container {
+    width: 100%;
+    margin: 0 auto;
+}
+
+nav ul a:hover {
+    background-color: var(--accent);
+}
+
+
+.slider .indicators .indicator-item.active {
+    background-color: var(--accent);
+    color: var(--dark);
+}
+
+#get-started {
+    background-color: var(--dark);
+}
+
+#get-started a,
+#get-started a:hover {
+    background-color: var(--accent);
+}
+
 .top-picks {
-    margin: auto 0;
+    margin: 50px;
     height: auto;
+}
+
+.card,
+.card .card-image img {
+    border-top-right-radius: 70px;
+}
+
+.card .card-image {
+    position: relative;
+    padding: 8px;
+}
+
+.card p {
+    padding: 0 24px 24px 24px;
+}
+
+#card-action {
+    text-align: center;
+    padding: 16px 24px;
+    background-color: var(--dark);
+    text-transform: uppercase;
+    color: var(--white);
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+#card-action:hover {
+    background-color: var(--accent);
+}
+
+#card-action a {
+    color: var(--white);
+}
+
+#card-action a:hover {
+    color: var(--white);
+}
+
+.card-title {
+    bottom: 0;
+    right: 0;
+    text-align: right;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.card-panel {
+    margin: 0;
+
+}
+
+.keySection {
+    margin: 0;
+}
+
+.keyTitle {
+    font-size: 40px;
+}
+
+.keySubtitle {
+    margin: 0;
+}
+
+.keyFeatures {
+    position: relative;
+    background-color: #00000011;
+    height: 650px;
+    margin-top: 50px;
+    justify-content: center;
+    align-items: center;
+}
+
+.keyFeaturesIcons {
+    margin-top: 70px;
+}
+
+.travelTrackerKeyFeatures {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    color: var(--black);
+}
+
+.parallax-container {
+    display: flex;
+    justify-content: flex-start;
+    align-content: flex-start;
+    margin: 0;
+    height: 650px;
+    position: relative;
+    z-index: 99;
+}
+
+.egyptPhoto {
+    margin: 0;
+}
+
+.egyptPhotoTitle {
+    color: var(--white);
+    font-size: 50px;
+}
+
+.wordLoopDecoration {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.word-loop-container {
+    padding-top: 20px;
+    height: 200px;
+    margin: 0;
+    overflow: hidden;
+    font-size: 100px;
+    color: #00000030;
+}
+
+.word-loop {
+    white-space: nowrap;
+    animation: wordLoop 20s linear infinite;
+    font-size: 200px;
+    color: #ffffff64;
+}
+
+@keyframes wordLoop {
+    0% {
+        transform: translateX(100%);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+
+.howItWorks {
+    margin: 50px 0;
 }
 
 footer.page-footer {
     background-color: var(--main);
 }
 
-@media (max-width: 600px) {
-    .keyFeaturesSection {
-        display: none;
+
+@media only screen and (min-width: 993px) {
+    .parallax-content {
+        height: 650px;
     }
 }
+
 
 /* Custom Stylesheet */
 /**
@@ -93,11 +248,9 @@ p {
 }
 
 .parallax-container {
-    min-height: 600px;
     line-height: 0;
-    height: auto;
+    height: 650px;
     color: var(--black);
-    margin-bottom: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -121,6 +274,13 @@ p {
 @media only screen and (max-width : 600px) {
     #index-banner .section {
         top: 0;
+    }
+
+    .keyFeaturesIcons {
+        background-color: #00000011;
+        margin-top: 0;
+        margin-bottom: 50px;
+        padding: 20px;
     }
 }
 
