@@ -78,6 +78,9 @@ $(document).ready(function () {
     $('#memos').val(bucket.memos);
     $('#budget').val(bucket.budget);
 
+    // set the dates
+    $('#start-date').val(bucket.startdate);
+    $('#end-date').val(bucket.enddate);
     // Set checkbox status
     $('#tickets_needed').prop('checked', bucket.ticketsNeeded);
     $('#completed').prop('checked', bucket.completed);
@@ -101,6 +104,8 @@ $(document).ready(function () {
     var completed = $("#completed").prop("checked");
     var budget = $("#budget").val();
     var category = $("#category").val();
+    var startdate = $("#start-date").val();
+    var enddate = $("#end-date").val();
 
     var data = {
       title: title,
@@ -109,7 +114,9 @@ $(document).ready(function () {
       tickets_needed: tickets_needed,
       completed: completed,
       budget: budget,
-      category: category
+      category: category,
+      startdate: startdate,
+      enddate: enddate
     };
 
     var key = new Date().getTime().toString(); // used to generate a unique key so that each item in local storage has a unique identifier using the current time.
