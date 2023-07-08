@@ -85,6 +85,9 @@ $(document).ready(function () {
         // Set selected category
         $('#category').val(bucket.category);
 
+        // Initialize form select
+        $('select').formSelect();
+
         // Set labels to active
         setLabelsActive();
     }
