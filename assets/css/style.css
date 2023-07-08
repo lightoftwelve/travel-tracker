@@ -11,11 +11,6 @@
     text-decoration: none;
 }
 
-.label-placeholder.filled {
-    transform: translateY(-110%) scale(0.75);
-}
-
-
 body {
     font-family: 'Merriweather', serif;
     font-size: 16px;
