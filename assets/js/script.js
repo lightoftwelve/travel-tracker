@@ -142,112 +142,59 @@ $(document).ready(function () {
   });
 
   // Calendar: Capture the start and end date of the plan
-    
-    // Capture today's date.
-    var currentDate = new Date();
 
-    // Initialize the start date picker
-    var startDatePicker = $('#start-date').datepicker({
-      autoClose: true,
-      format: 'mm-dd-yyyy',
-      minDate: currentDate,
-      onSelect: function(date) {
-        // Allow the end date calendar to start one more day than selected start date
-        if (date) {
-          var startDate = new Date(date);
-          startDate.setDate(startDate.getDate() + 1);
-          updateEndDatePicker(startDate);
-        }
-      }
-    }).on('change', function() {
-      // For any change in the start date, update the end date picker
-      var startDate = new Date($(this).val());
-      if (startDate && !isNaN(startDate.getTime())) {
+  // Capture today's date.
+  var currentDate = new Date();
+
+  // Initialize the start date picker
+  var startDatePicker = $('#start-date').datepicker({
+    autoClose: true,
+    format: 'mm-dd-yyyy',
+    minDate: currentDate,
+    onSelect: function (date) {
+      // Allow the end date calendar to start one more day than selected start date
+      if (date) {
+        var startDate = new Date(date);
         startDate.setDate(startDate.getDate() + 1);
         updateEndDatePicker(startDate);
-      } else {
-        endDatePicker.prop('disabled', true).val('');
-      }
-    });
-
-    // Start the end date picker disabled for input
-    var endDatePicker = $('#end-date').prop('disabled', true);
-
-    // Initialize the end date picker based on the date thats passed, and enable the date picker input box
-    function updateEndDatePicker(date) {
-
-      if (endDatePicker.initialized) {
-        endDatePicker.datepicker('destroy');
-      }
-      // Initialize the end date picker with the calendar starting from the date (Start Date) that is selected
-      endDatePicker.datepicker({
-        autoClose: true,
-        format: 'mm-dd-yyyy',
-        minDate: date
-      });
-
-      // Enable the end date input box 
-      endDatePicker.prop('disabled', false);
-      endDatePicker.initialized = true;
-      
-      // Change the end date, if the start date is beyond end date
-      var endDate = new Date($(endDatePicker).val());
-      if (date > endDate) {
-        $(endDatePicker).val(dayjs(date).format('MM-DD-YYYY'));
       }
     }
-});
+  }).on('change', function () {
+    // For any change in the start date, update the end date picker
+    var startDate = new Date($(this).val());
+    if (startDate && !isNaN(startDate.getTime())) {
+      startDate.setDate(startDate.getDate() + 1);
+      updateEndDatePicker(startDate);
+    } else {
+      endDatePicker.prop('disabled', true).val('');
+    }
+  });
 
-// Start of the attached the script for the map
-mapboxgl.accessToken = 'pk.eyJ1Ijoic3Rhbm9wMDkiLCJhIjoiY2xqcmhndWtxMGVuMzNjcnkyNjZ6eWZ5NiJ9.OSXBLFAFrFcw5S7mB93ePQ';
-var map = new mapboxgl.Map({
-  container: 'map',
-  style: 'mapbox://styles/mapbox/streets-v11',
-  center: [0, 0], // Set the initial center to the world map
-  zoom: 1 // Set the initial zoom level for the world map
-});
+  // Start the end date picker disabled for input
+  var endDatePicker = $('#end-date').prop('disabled', true);
 
-var geocoder = new MapboxGeocoder({
-  accessToken: mapboxgl.accessToken,
-  mapboxgl: mapboxgl,
-  marker: false,
-  minLength: 2, // Specify the minimum length of input before searching
-  placeholder: "Enter a location"
-});
+  // Initialize the end date picker based on the date thats passed, and enable the date picker input box
+  function updateEndDatePicker(date) {
 
-document.getElementById('search').appendChild(geocoder.onAdd(map));
-
-geocoder.on('result', function (e) {
-  map.flyTo({ center: e.result.center, zoom: 12 }); // Zoom to the selected location with a zoom level of 12
-  populateTitleAndAddress(e.result);
-  clearAutocompleteDropdown();
-});
-
-geocoder.on('results', function (e) {
-  var results = e.features;
-  if (results.length > 0) {
-    var dropdown = document.getElementById('autocomplete-dropdown');
-    dropdown.innerHTML = '';
-
-    results.forEach(function (result) {
-      var item = document.createElement('div');
-      item.classList.add('autocomplete-item');
-      item.textContent = result.place_name;
-      item.addEventListener('click', function () {
-        geocoder.query(result.place_name);
-        clearAutocompleteDropdown();
-      });
-      dropdown.appendChild(item);
+    if (endDatePicker.initialized) {
+      endDatePicker.datepicker('destroy');
+    }
+    // Initialize the end date picker with the calendar starting from the date (Start Date) that is selected
+    endDatePicker.datepicker({
+      autoClose: true,
+      format: 'mm-dd-yyyy',
+      minDate: date
     });
-  }
-});
 
-document.getElementById('search').addEventListener('input', function () {
-  var input = this.value;
-  if (input.length >= geocoder.options.minLength) {
-    geocoder.query(input);
-  } else {
-    clearAutocompleteDropdown();
+    // Enable the end date input box 
+    endDatePicker.prop('disabled', false);
+    endDatePicker.initialized = true;
+
+    // Change the end date, if the start date is beyond end date
+    var endDate = new Date($(endDatePicker).val());
+    if (date > endDate) {
+      $(endDatePicker).val(dayjs(date).format('MM-DD-YYYY'));
+    }
   }
 });
 
