@@ -6,8 +6,10 @@
     <title>Bucketlist | TravelTracker</title>
     <script src='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js'></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css' rel='stylesheet' />
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
 </head>
 
 <body>
@@ -98,11 +100,11 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s6">
-                        <input type="text" id="start-date" class="datepicker">
+                        <input type="text" id="start-date" class="datepicker" autocomplete="off">
                         <label for="start-date">Start Date</label>
                     </div>
                     <div class="input-field col s6">
-                        <input type="text" id="end-date" class="datepicker">
+                        <input type="text" id="end-date" class="datepicker" autocomplete="off">
                         <label for="end-date">End Date</label>
                     </div>
                 </div>

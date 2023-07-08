@@ -133,6 +133,61 @@ $(document).ready(function () {
             $("#budget").hide();
         }
     });
+
+    // Calendar: Capture Start and End Date
+    // capture today's date.
+    var currentDate = new Date();
+
+    // initialize the start date picker
+    var startDatePicker = $('#start-date').datepicker({
+      autoClose: true,
+      format: 'mm-dd-yyyy',
+      minDate: currentDate,
+      onSelect: function(date) {
+        // allow the end date calendar to start one more day than selected start date
+        if (date) {
+          var startDate = new Date(date);
+          startDate.setDate(startDate.getDate() + 1);
+          updateEndDatePicker(startDate);
+        }
+      }
+    }).on('change', function() {
+      // for any change in the start date, update the end date picker
+      var startDate = new Date($(this).val());
+      if (startDate && !isNaN(startDate.getTime())) {
+        startDate.setDate(startDate.getDate() + 1);
+        updateEndDatePicker(startDate);
+      } else {
+        endDatePicker.prop('disabled', true).val('');
+      }
+    });
+
+    // start the end date picker disabled for input
+    var endDatePicker = $('#end-date').prop('disabled', true);
+
+    // initialize the end date picker based on the date thats passed, and enable the date picker input box
+    function updateEndDatePicker(date) {
+
+      if (endDatePicker.initialized) {
+        endDatePicker.datepicker('destroy');
+      }
+      // initialize the end date picker with the calendar starting from the date (Start Date) that is selected
+      endDatePicker.datepicker({
+        autoClose: true,
+        format: 'mm-dd-yyyy',
+        minDate: date
+      });
+
+      // enable the end date input box 
+      endDatePicker.prop('disabled', false);
+      endDatePicker.initialized = true;
+      
+      // change the end date, if the start date is beyond end date
+      var endDate = new Date($(endDatePicker).val());
+      if (date > endDate) {
+        $(endDatePicker).val(dayjs(date).format('MM-DD-YYYY'));
+      }
+    }
 });
 
 // Start of the attached the script for the map
