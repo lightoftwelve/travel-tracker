@@ -204,4 +204,4 @@ function populateTitleAndAddress(result) {
 function clearAutocompleteDropdown() {
   document.getElementById('autocomplete-dropdown').innerHTML = '';
 }
-// Ending of attached the script for the map
+// Endings of attached the script for the map
