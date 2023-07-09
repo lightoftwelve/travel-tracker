@@ -57,18 +57,19 @@ function fetchSuggestions() {
     .then(data => {
       if (data.features.length > 0) {
         for (var i = 0; i < 4 && i < data.features.length; i++) {
-          var feature = data.features[i];
-          var suggestion = document.createElement('div');
-          suggestion.classList.add('suggestion');
-          suggestion.textContent = feature.place_name;
-          suggestion.addEventListener('click', function () {
-            document.getElementById('search').value = feature.place_name;
-            geocoder.query(feature.place_name);
-            suggestionsContainer.innerHTML = '';
-            suggestionsContainer.classList.remove('visible');
-          });
-
-          suggestionsContainer.appendChild(suggestion);
+          (function (feature) {
+            var suggestion = document.createElement('div');
+            suggestion.classList.add('suggestion');
+            suggestion.textContent = feature.place_name;
+            suggestion.addEventListener('click', function () {
+              document.getElementById('search').value = feature.place_name;
+              geocoder.query(feature.place_name);
+              suggestionsContainer.innerHTML = '';
+              suggestionsContainer.classList.remove('visible');
+            });
+        
+            suggestionsContainer.appendChild(suggestion);
+          })(data.features[i]);
         }
 
         suggestionsContainer.classList.add('visible');
