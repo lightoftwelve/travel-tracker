@@ -15,11 +15,10 @@
             <div id="header-container"></div>
         </nav>
     </header>
-
-    <div class="container">
+    <main>
         <div class="row">
             <!-- First column -->
-            <div class="col s4">
+            <div class="col s12 m3">
                 <div class="myAdventures">
                     <h5>My Adventures</h5>
                     <div class="row">
@@ -74,14 +73,14 @@
                 </ul>
             </div>
             <!-- Second column -->
-            <div class="col s8">
+            <div class="col s9">
                 <h5>Planning</h5>
                 <!-- Start of map code for html -->
-                <div id='map' style='width: 600px; height: 300px;'>
+                <div id='map' style='width: 100%; height: 350px;'>
                     <div class="search-container">
                         <div id="search-container-top">
-                        <input type="text" id="search" class="search-bar" placeholder="Enter a location">
-                        <button id="search-button" class="custom-button">Search</button>
+                            <input type="text" id="search" class="search-bar" placeholder="Enter a location">
+                            <button id="search-button" class="custom-button">Search</button>
                         </div>
                     </div>
                 </div>
@@ -168,22 +167,23 @@
                 </button>
             </div>
         </div>
-    </div>
-
-    <script>
-        $(document).ready(function () {
-            $('#header-container').load('header.html');
-        });
-    </script>
 
 
-    <!-- Script for mapbox attaxhed here. At the next two lines -->
-    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
-    <script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>
-    <script
-        src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.3/mapbox-gl-geocoder.min.js'></script>
-    <script src="assets/js/mapbox.js"></script>
-    <script src="assets/js/script.js"></script>
+        <script>
+            $(document).ready(function () {
+                $('#header-container').load('header.html');
+            });
+        </script>
+
+
+        <!-- Script for mapbox attaxhed here. At the next two lines -->
+        <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+        <script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>
+        <script
+            src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.3/mapbox-gl-geocoder.min.js'></script>
+        <script src="assets/js/mapbox.js"></script>
+        <script src="assets/js/script.js"></script>
+    </main>
 </body>
 
 

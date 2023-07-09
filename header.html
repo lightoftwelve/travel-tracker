@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Header | TravelTracker</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="assets/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
@@ -15,17 +15,37 @@
     <header>
         <nav>
             <div class="nav-wrapper">
-                <a href="index.html" class="brand-logo left"><i
-                        class="material-icons custom-icon">flight_takeoff</i>TravelTracker
-                    <ul class="right hide-on-sm-and-down">
-                        <li><a href="bucketlist.html">BUCKETLIST</a></li>
-                        <li><a href="about.html">ABOUT</a></li>
-                        <li><a href="contact.html">CONTACT</a></li>
-                    </ul>
+                <a href="index.html" class="brand-logo left">
+                    <i class="material-icons custom-icon airplane-icon">flight_takeoff</i>
+                    TravelTracker
+                </a>
+                <a href="#" data-target="mobile-nav" class="sidenav-trigger right"><i
+                        class="material-icons">menu</i></a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a href="bucketlist.html">BUCKETLIST</a></li>
+                    <li><a href="about.html">ABOUT</a></li>
+                    <li><a href="contact.html">CONTACT</a></li>
+                </ul>
             </div>
         </nav>
     </header>
 
+    <!-- Mobile Navigation -->
+    <ul class="sidenav" id="mobile-nav">
+        <li><a href="bucketlist.html">BUCKETLIST</a></li>
+        <li><a href="about.html">ABOUT</a></li>
+        <li><a href="contact.html">CONTACT</a></li>
+    </ul>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.sidenav').sidenav({
+                edge: 'right' // Set the edge option to 'right'
+            });
+        });
+    </script>
 </body>
 
 </html>
