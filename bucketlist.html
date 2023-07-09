@@ -73,16 +73,22 @@
                 </ul>
             </div>
             <!-- Second column -->
-            <div class="col s9">
+            <div class="col s12 m9">
                 <h5>Planning</h5>
                 <!-- Start of map code for html -->
-                <div id='map' style='width: 100%; height: 350px;'>
-                    <div class="search-container">
-                        <div id="search-container-top">
+                <div id='map' style='height: 350px;'>
+                    <div class="search-container" class="row valign-wrapper">
+                        <div class="input-field col s9">
                             <input type="text" id="search" class="search-bar" placeholder="Enter a location">
-                            <button id="search-button" class="custom-button">Search</button>
+                        </div>
+                        <div class="col s3">
+                            <button id="search-button" class="searchBtn">
+                                <i class="material-icons">search</i>
+                                <span>SEARCH</span>
+                            </button>
                         </div>
                     </div>
+
                 </div>
                 <!-- End of map code for html -->
                 <div class="input-field">
@@ -97,7 +103,7 @@
                     <input id="memos" type="text">
                     <label for="memos" class="active">Memos</label>
                 </div>
-                <div class="row">
+                <div class="row s12">
                     <div class="input-field col s6">
                         <input type="text" id="start-date" class="datepicker">
                         <label for="start-date">Start Date</label>

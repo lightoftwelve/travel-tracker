@@ -48,6 +48,10 @@ h3 {
     font-size: 24px;
 }
 
+nav .brand-logo {
+    font-size: 26px;
+}
+
 .hero-container {
     width: 100%;
     margin: 0 auto;
@@ -157,6 +161,10 @@ nav ul a:hover {
     color: var(--black);
 }
 
+.howItWorks {
+    margin: 50px 0;
+}
+
 .parallax-container {
     display: flex;
     justify-content: flex-start;
@@ -209,73 +217,82 @@ nav ul a:hover {
     }
 }
 
-
-.howItWorks {
-    margin: 50px 0;
-}
-
-.custom-button {
-    padding: 0 50px;
-    margin: 0;
-    background-color: white;
-    border: 2px solid var(--main);
+.btn,
+.custom-button,
+.searchBtn,
+#save_button {
+    padding: 10px 50px;
+    background-color: rgba(255, 255, 255, 0.879);
+    border: 1px solid var(--main);
     color: var(--main);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.custom-button:hover {
+.custom-button:hover,
+.searchBtn:hover,
+#save_button:hover {
     background-color: var(--main);
-    color: white;
-}
-
-.custom-button .material-icons {
-    margin-right: 5px;
-}
-
-
-footer.page-footer {
-    background-color: var(--main);
-}
-
-
-@media only screen and (min-width: 993px) {
-    .parallax-content {
-        height: 650px;
-    }
-}
-
-
-/* Custom Stylesheet */
-/**
- * Use this file to override Materialize files so you can update
- * the core Materialize files in the future
- *
- * Made By MaterializeCSS.com
- */
-
-nav ul a,
-nav .brand-logo {
     color: var(--white);
 }
 
-p {
-    line-height: 2rem;
-}
+.search-container {
+    position: relative;
 
-.sidenav-trigger {
-    color: var(--accent);
-}
-
-.parallax-container {
-    line-height: 0;
-    height: 650px;
-    color: var(--black);
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 1;
+    font-size: small;
 }
 
-.parallax-container .section {
-    width: 100%;
+#search {
+    padding-left: 10px;
+    color: var(--main);
+    border: 1px solid var(--main);
+    background-color: rgba(255, 255, 255, 0.879);
+    margin: 0;
+}
+
+.searchBtn:focus {
+    color: var(--white);
+    background-color: #04556ece;
+}
+
+footer.page-footer {
+    background-color: var(--main);
+    margin: 0;
+}
+
+@media only screen and (max-width : 600px) {
+    .keyFeaturesIcons {
+        background-color: #00000011;
+        margin-top: 0;
+        margin-bottom: 50px;
+        padding: 20px;
+    }
+
+    .searchBtn {
+        padding: 1px 20px;
+    }
+
+    .searchBtn i {
+        display: none;
+
+    }
+
+    .searchBtn span {
+        display: inline-block;
+        vertical-align: middle;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    .parallax-content {
+        height: 650px;
+    }
 }
 
 @media only screen and (max-width : 992px) {
@@ -287,61 +304,4 @@ p {
     #index-banner .section {
         top: 10%;
     }
-}
-
-@media only screen and (max-width : 600px) {
-    #index-banner .section {
-        top: 0;
-    }
-
-    .keyFeaturesIcons {
-        background-color: #00000011;
-        margin-top: 0;
-        margin-bottom: 50px;
-        padding: 20px;
-    }
-}
-
-.icon-block {
-    padding: 0 15px;
-}
-
-.icon-block .material-icons {
-    font-size: inherit;
-}
-
-footer.page-footer {
-    margin: 0;
-}
-
-.search-container {
-    display: flex;
-}
-
-#search-container-top {
-    position: relative;
-    top: 10px;
-    left: 10px;
-    width: 80%;
-    z-index: 1;
-    font-size: small;
-    /* background-color: white; */
-}
-
-#map {
-    position: relative;
-}
-
-#search {
-    background-color: black;
-    padding-left: 10px;
-    color: white;
-}
-
-.search-bar {
-    margin-bottom: 10px;
-}
-
-.search-button {
-    margin-left: 10px;
 }
