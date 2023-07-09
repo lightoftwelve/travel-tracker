@@ -19,7 +19,7 @@ body {
 }
 
 .custom-icon {
-    padding-left: 30px;
+    padding-left: 10px;
 }
 
 nav {
@@ -215,7 +215,7 @@ nav ul a:hover {
 }
 
 .custom-button {
-    padding: 0 60px;
+    padding: 0 50px;
     margin: 0;
     background-color: white;
     border: 2px solid var(--main);
@@ -316,17 +316,18 @@ footer.page-footer {
 
 .search-container {
     display: flex;
-  }
+}
 
 #search-container-top {
     position: relative;
-   top: 10px;
-   left: 10px;
-   width: 80%;
+    top: 10px;
+    left: 10px;
+    width: 80%;
     z-index: 1;
     font-size: small;
     /* background-color: white; */
 }
+
 #map {
     position: relative;
 }
@@ -336,10 +337,11 @@ footer.page-footer {
     padding-left: 10px;
     color: white;
 }
+
 .search-bar {
     margin-bottom: 10px;
-  }
+}
 
 .search-button {
     margin-left: 10px;
-  }
+}
