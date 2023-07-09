@@ -76,12 +76,15 @@
             <!-- Second column -->
             <div class="col s8">
                 <h5>Planning</h5>
-                <div id='map' style='width: 600px; height: 300px;'></div>
                 <!-- Start of map code for html -->
-                <div id="map"></div>
-                <input type="text" id="search" class="search-bar" placeholder="Enter a location">
-                <button id="search-button" class="search-button">Search</button>
-                <div id="suggestions" class="suggestions"></div>
+                <div id='map' style='width: 600px; height: 300px;'>
+                    <div class="search-container">
+                        <div id="search-container-top">
+                        <input type="text" id="search" class="search-bar" placeholder="Enter a location">
+                        <button id="search-button" class="custom-button">Search</button>
+                        </div>
+                    </div>
+                </div>
                 <!-- End of map code for html -->
                 <div class="input-field">
                     <input id="title" type="text">
