@@ -129,15 +129,28 @@ $(document).ready(function () {
       .text(title)
       .attr("data-key", key); // Stores the key in a data attribute
 
+    var deleteButton = $('<button>')
+      .addClass('btn btn-link delete-button')
+      .html('<span class="material-icons">delete</span>');
+
+    deleteButton.on('click', function () {
+      item.remove(); // Remove the list item from the DOM
+
+      var key = item.attr("data-key"); // Get the key associated with the list item
+      localStorage.removeItem(key); // Remove the data from local storage using the key
+    });
+
+    item.append(deleteButton); // Append the delete button to the list item
+
     $("#list_area").append(item);
   });
 
   // Toggle Budget Field
   $("#budget_toggle").change(function () {
     if (this.checked) {
-      $("#budget").show();
-    } else {
       $("#budget").hide();
+    } else {
+      $("#budget").show();
     }
   });
 

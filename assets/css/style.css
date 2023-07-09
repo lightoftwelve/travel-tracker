@@ -293,6 +293,19 @@ nav ul a:hover {
     background-color: #04556ece;
 }
 
+.datepicker-date-display {
+    background-color: var(--main);
+}
+
+.datepicker-table td.is-today {
+    color: var(--main);
+}
+
+.datepicker-table td.is-selected {
+    color: var(--white);
+    background-color: var(--accent);
+}
+
 footer.page-footer {
     background-color: var(--main);
     margin: 0;
