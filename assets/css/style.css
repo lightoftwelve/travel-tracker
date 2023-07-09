@@ -239,7 +239,6 @@ nav ul a:hover {
 
 .search-container {
     position: relative;
-
     width: 100%;
     display: flex;
     justify-content: center;
@@ -249,28 +248,44 @@ nav ul a:hover {
 }
 
 #search {
+    margin: 0;
     padding-left: 10px;
     color: var(--main);
     border: 1px solid var(--main);
     background-color: rgba(255, 255, 255, 0.879);
-    margin: 0;
 }
 
-/* Style for suggestion bar starts here */
 .suggestions-container {
+    margin: 0;
     visibility: visible;
     position: relative;
 }
 
 #suggestions {
+    width: 75%;
     background-color: #f5f5f5;
     border: 1px solid #ccc;
     border-radius: 4px;
-    padding: 10px;
     position: absolute;
-    width: 40%;
     z-index: 1;
+    margin: 0;
+    padding-left: 2px;
+    color: var(--main);
+    background-color: rgba(255, 255, 255, 0.879);
 }
+
+#suggestions .suggestion {
+    padding: 10px;
+    cursor: pointer;
+}
+
+#suggestions .suggestion:hover,
+#suggestions .suggestion:focus {
+    background-color: var(--main);
+    color: var(--white);
+    outline: none;
+}
+
 /* Style for suggestion bar ends here */
 
 .searchBtn:focus {
