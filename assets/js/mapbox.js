@@ -38,3 +38,43 @@ document.getElementById('search-button').addEventListener('click', function () {
 document.getElementById('search').addEventListener('input', function () {
   addressInput.value = '';
 });
+
+// Suggestion code starts here
+function fetchSuggestions() {
+  var searchInput = document.getElementById('search').value.trim();
+  var suggestionsContainer = document.getElementById('suggestions');
+  suggestionsContainer.innerHTML = '';
+
+  if (searchInput.length < 2) {
+    suggestionsContainer.classList.remove('visible');
+    return;
+  }
+
+  var autocompleteUrl = 'https://api.mapbox.com/geocoding/v5/mapbox.places/' + encodeURIComponent(searchInput) + '.json?access_token=' + mapboxgl.accessToken;
+
+  fetch(autocompleteUrl)
+    .then(response => response.json())
+    .then(data => {
+      if (data.features.length > 0) {
+        for (var i = 0; i < 4 && i < data.features.length; i++) {
+          var feature = data.features[i];
+          var suggestion = document.createElement('div');
+          suggestion.classList.add('suggestion');
+          suggestion.textContent = feature.place_name;
+          suggestion.addEventListener('click', function () {
+            document.getElementById('search').value = feature.place_name;
+            geocoder.query(feature.place_name);
+            suggestionsContainer.innerHTML = '';
+            suggestionsContainer.classList.remove('visible');
+          });
+
+          suggestionsContainer.appendChild(suggestion);
+        }
+
+        suggestionsContainer.classList.add('visible');
+      } else {
+        suggestionsContainer.classList.remove('visible');
+      }
+    })
+    .catch(error => console.log(error));
+}
