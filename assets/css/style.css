@@ -256,6 +256,23 @@ nav ul a:hover {
     margin: 0;
 }
 
+/* Style for suggestion bar starts here */
+.suggestions-container {
+    visibility: visible;
+    position: relative;
+}
+
+#suggestions {
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    position: absolute;
+    width: 40%;
+    z-index: 1;
+}
+/* Style for suggestion bar ends here */
+
 .searchBtn:focus {
     color: var(--white);
     background-color: #04556ece;
