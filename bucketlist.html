@@ -79,7 +79,11 @@
                 <div id='map' style='height: 350px;'>
                     <div class="search-container" class="row valign-wrapper">
                         <div class="input-field col s9">
-                            <input type="text" id="search" class="search-bar" placeholder="Enter a location" oninput="fetchSuggestions()"> <!-- added oninput="fetchSuggestions()" -->
+                            <input type="text" id="search" class="search-bar" placeholder="Enter a location"
+                                oninput="fetchSuggestions()">
+                            <div class="suggestions-container">
+                                <div id="suggestions"></div>
+                            </div>
                         </div>
                         <div class="col s3">
                             <button id="search-button" class="searchBtn">
@@ -87,9 +91,6 @@
                                 <span>SEARCH</span>
                             </button>
                         </div>
-                    </div>
-                    <div class="suggestions-container">
-                            <div id="suggestions"></div>
                     </div>
                 </div>
                 <!-- End of map code for html -->

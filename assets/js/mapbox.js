@@ -67,7 +67,7 @@ function fetchSuggestions() {
               suggestionsContainer.innerHTML = '';
               suggestionsContainer.classList.remove('visible');
             });
-        
+
             suggestionsContainer.appendChild(suggestion);
           })(data.features[i]);
         }
