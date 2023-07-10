@@ -350,3 +350,43 @@ footer.page-footer {
         top: 10%;
     }
 }
+
+/* Map container */
+#map {
+  height: 400px;
+}
+
+/* Map style select dropdown */
+#style-select {
+  width: 200px;
+  padding: 8px;
+  font-size: 14px;
+}
+
+/* Suggestions container */
+#suggestions {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  max-height: 200px;
+  overflow-y: auto;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-top: none;
+  display: none;
+}
+
+#suggestions.visible {
+  display: block;
+}
+
+.suggestion {
+  padding: 8px;
+  cursor: pointer;
+}
+
+.suggestion:hover {
+  background-color: #f4f4f4;
+}
