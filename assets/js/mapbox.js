@@ -1,10 +1,19 @@
 // Start of the attached script for the map
 mapboxgl.accessToken = 'pk.eyJ1Ijoic3Rhbm9wMDkiLCJhIjoiY2xqcmhndWtxMGVuMzNjcnkyNjZ6eWZ5NiJ9.OSXBLFAFrFcw5S7mB93ePQ';
+var styleSelect = document.getElementById('style-select');
+var selectedStyle = styleSelect.value;
+
 var map = new mapboxgl.Map({
   container: 'map',
-  style: 'mapbox://styles/mapbox/streets-v11',
+  style: selectedStyle,
   center: [0, 0], // Set the initial center to the world map
   zoom: 1 // Set the initial zoom level for the world map
+});
+
+// Event listener to update the map style when the user selects a different option
+styleSelect.addEventListener('change', function () {
+  selectedStyle = styleSelect.value;
+  map.setStyle(selectedStyle);
 });
 
 var geocoder = new MapboxGeocoder({
