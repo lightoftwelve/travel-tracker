@@ -99,6 +99,8 @@ $(document).ready(function () {
   $("#save_button").click(function () {
     var title = $("#title").val();
     var address = $("#address").val();
+    var addressLong = $("#addressLong").val();
+    var addressLat = $("#addressLat").val();
     var memos = $("#memos").val();
     var tickets_needed = $("#tickets_needed").prop("checked");
     var completed = $("#completed").prop("checked");
@@ -110,6 +112,8 @@ $(document).ready(function () {
     var data = {
       title: title,
       address: address,
+      addressLong: addressLong,
+      addressLat: addressLat,
       memos: memos,
       tickets_needed: tickets_needed,
       completed: completed,
@@ -209,4 +213,90 @@ $(document).ready(function () {
       $(endDatePicker).val(dayjs(date).format('MM-DD-YYYY'));
     }
   }
+
+
 });
+
+var APIKey="598dc121f9e0e587ba86da32aa3fa923";
+
+function getWeather() {
+
+  var addressLong = $("#addressLong").val();
+  var addressLat = $("#addressLat").val();
+  
+  var weatherAPI="https://api.openweathermap.org/data/2.5/weather?lat=" + addressLat + "&lon=" + addressLong + "&appid=" + APIKey +"&units=imperial";
+
+  console.log(weatherAPI);
+
+  fetch(weatherAPI)
+    .then(function (response) {
+      return response.json();
+      
+    })
+    .then(function (data) { 
+        var temperature = data.main.temp;
+        var humidity = data.main.humidity;
+        var wind = data.wind.speed;
+        var date = dayjs.unix(data.dt).format('MM/DD/YYYY');
+        var weatherIcon = data.weather[0].icon;
+        var weatherInfo;
+
+        weatherInfo = {
+          temperature: temperature,
+          humidity: humidity,
+          wind: wind,            
+          date:date ,
+          weatherIcon: weatherIcon
+         }
+        return weatherInfo;
+    })
+    .then(function (data) {
+        var htmlstring = '';
+        var weatherDiv = $("#weather");
+        weatherDiv.empty();
+        htmlstring += "<div class='card-content rgba(0,0,0,0.87)''>";
+        htmlstring += "<img id='icon' class='responsive-img'"+" src='https://openweathermap.org/img/w/" + data.weatherIcon + ".png' alt='Weather Icon'>";
+        htmlstring += "</span>";
+        htmlstring += "<ul>";
+        htmlstring += "<li>Temp: "+data.temperature +" &#8457;</li>";
+        htmlstring += "<li>Wind: "+data.wind +" MPH</li>";
+        htmlstring += "<li>Humidity: "+data.humidity +" %</li>";
+        htmlstring += "</ul>";
+        htmlstring += "</div>";
+        weatherDiv.append(htmlstring);
+    })
+
+        
+ 
+}  
+  
+  
+  // fetch(weatherAPI)
+  //     .then(function (response) {
+  //       return response.json();
+        
+  //     })
+  //     .then(function (data) {
+        
+  //       var temperature = data.main.temp;
+  //       var humidity = data.main.humidity;
+  //       var wind = data.wind.speed;
+  //       var place = city;
+  //       var date = dayjs.unix(data.dt).format('MM/DD/YYYY');
+  //       var weatherIcon = data.weather[0].icon;
+  //       var cityLat=data.coord.lat;
+  //       var cityLon= data.coord.lon;
+  //       var weatherInfo;
+
+  //       weatherInfo = {
+  //         place: place,
+  //         temperature: temperature,
+  //         humidity: humidity,
+  //         wind: wind,            
+  //         date:date ,
+  //         weatherIcon: weatherIcon,
+  //         cityLat:cityLat,
+  //         cityLon:cityLon,
+  //         forecast: forecastWeatherData
+  //       };
+//}

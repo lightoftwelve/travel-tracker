@@ -100,8 +100,15 @@
                 </div>
                 <div class="input-field">
                     <input id="address" type="text">
+                    <!-- hidden inputs to store Long, Lat of the selected place -->
+                    <input id="addressLong" hidden type="text"/>
+                    <input id="addressLat" hidden type="text" onchange="getWeather()"/>
                     <label for="address" class="active">Address</label>
                 </div>
+                <div id="weather" class="card horizontal weather">
+                    <div class="card-stacked">
+                    </div>
+                  </div>
                 <div class="input-field">
                     <input id="memos" type="text">
                     <label for="memos" class="active">Memos</label>
