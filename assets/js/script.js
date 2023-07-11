@@ -78,9 +78,17 @@ $(document).ready(function () {
     $('#memos').val(bucket.memos);
     $('#budget').val(bucket.budget);
 
+
     // set the dates
     $('#start-date').val(bucket.startdate);
     $('#end-date').val(bucket.enddate);
+
+    //set Lat and Long
+    $('#addressLong').val(bucket.addressLong);
+    $('#addressLong').trigger("change");
+    $('#addressLat').val(bucket.addressLat);
+    $('#addressLat').trigger("change");
+
     // Set checkbox status
     $('#tickets_needed').prop('checked', bucket.ticketsNeeded);
     $('#completed').prop('checked', bucket.completed);
@@ -216,7 +224,7 @@ $(document).ready(function () {
 
 
 });
-
+//updating weather data based on Long and Lat
 var APIKey="598dc121f9e0e587ba86da32aa3fa923";
 
 function getWeather() {
@@ -226,7 +234,7 @@ function getWeather() {
   
   var weatherAPI="https://api.openweathermap.org/data/2.5/weather?lat=" + addressLat + "&lon=" + addressLong + "&appid=" + APIKey +"&units=imperial";
 
-  console.log(weatherAPI);
+  //console.log(weatherAPI);
 
   fetch(weatherAPI)
     .then(function (response) {
@@ -269,34 +277,3 @@ function getWeather() {
         
  
 }  
-  
-  
-  // fetch(weatherAPI)
-  //     .then(function (response) {
-  //       return response.json();
-        
-  //     })
-  //     .then(function (data) {
-        
-  //       var temperature = data.main.temp;
-  //       var humidity = data.main.humidity;
-  //       var wind = data.wind.speed;
-  //       var place = city;
-  //       var date = dayjs.unix(data.dt).format('MM/DD/YYYY');
-  //       var weatherIcon = data.weather[0].icon;
-  //       var cityLat=data.coord.lat;
-  //       var cityLon= data.coord.lon;
-  //       var weatherInfo;
-
-  //       weatherInfo = {
-  //         place: place,
-  //         temperature: temperature,
-  //         humidity: humidity,
-  //         wind: wind,            
-  //         date:date ,
-  //         weatherIcon: weatherIcon,
-  //         cityLat:cityLat,
-  //         cityLon:cityLon,
-  //         forecast: forecastWeatherData
-  //       };
-//}
