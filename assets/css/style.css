@@ -86,6 +86,10 @@ nav ul a:hover {
     border-top-right-radius: 70px;
 }
 
+.card.weather {
+    border-top-right-radius: 0;
+}
+
 .card .card-image {
     position: relative;
     padding: 8px;

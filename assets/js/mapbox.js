@@ -60,6 +60,9 @@ function fetchSuggestions() {
   }
 
   var autocompleteUrl = 'https://api.mapbox.com/geocoding/v5/mapbox.places/' + encodeURIComponent(searchInput) + '.json?access_token=' + mapboxgl.accessToken;
+  //need to store Long,Lat coordinates of the place
+  var addressLat = document.getElementById('addressLat');
+  var addressLong = document.getElementById('addressLong');
 
   fetch(autocompleteUrl)
     .then(response => response.json())
@@ -73,6 +76,11 @@ function fetchSuggestions() {
             suggestion.addEventListener('click', function () {
               document.getElementById('search').value = feature.place_name;
               geocoder.query(feature.place_name);
+              // store the selected places' co-ordinates.
+              addressLong.value = feature.geometry.coordinates[0];
+              $(addressLong).trigger("change");
+              addressLat.value = feature.geometry.coordinates[1];
+              $(addressLat).trigger("change");
               suggestionsContainer.innerHTML = '';
               suggestionsContainer.classList.remove('visible');
             });
