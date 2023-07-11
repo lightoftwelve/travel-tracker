@@ -100,6 +100,14 @@ $(document).ready(function() {
   });
 });
 
+//getting the frontpage flyto working
+var urlParams = new URLSearchParams(window.location.search); //gets the destination address
+var address = urlParams.get('address'); //makes the address the destination address
+
+if (address) {
+  flyToAddress(address);
+} //flies to the address
+
 function flyToAddress(address) {
   geocoder.query(address, function(results) {
     if (results.features.length > 0) {
