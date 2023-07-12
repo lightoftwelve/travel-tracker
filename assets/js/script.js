@@ -274,6 +274,43 @@ function getWeather() {
         weatherDiv.append(htmlstring);
     })
 
-        
- 
 }  
+
+function fetchHistorical(e){
+  var day = $(e).val();
+  var weatherHistory = [];
+  let sumTemperature = 0; // Accumulator for temperature
+  let sumHumidity = 0; // Accumulator for humidity
+
+  // Calculate the maximum number of iterations based on remaining days to reach 30
+  const remainingDays = 30 - day + 1;
+  const maxIterations = Math.min(3, remainingDays);
+
+  // Iterate for the specified limit, incrementing the day value at each iteration
+  for (let i = 0; i < maxIterations; i++) {
+    // Calculate the current day value within the range of "day" and 30
+    const currentDay = (day + i) > 30 ? (day + i - 30) : (day + i); 
+    fetchHistoricalData(currentDay, month, addressLong, addressLat)
+      .then(data => {
+        weatherHistory.push([data.result.temp.mean, data.result.humidity.mean, data.result.wind.mean, data.result.precipitation.mean]);
+        console.table(weatherHistory);
+      })
+      .catch(error => {
+        // Handle any errors that occur during the fetch or processing
+        console.error('An error occurred:', error);
+      });
+  }
+
+}
+
+
+function fetchHistoricalData(day, month, addressLong, addressLat) {
+  const url = `https://history.openweathermap.org/data/2.5/aggregated/day?lat=${addressLat}&lon=${addressLong}&day=${day}&month=${month}&appid=${APIKey}&units=imperial`;
+
+  return fetch(url)
+    .then(response => response.json())
+    .then(data => {
+      console.log(url); 
+      return data;
+    });
+}
