@@ -111,26 +111,31 @@
                     <input id="address" type="text">
                     <!-- hidden inputs to store Long, Lat of the selected place -->
                     <input id="addressLong" hidden type="text"/>
-                    <input id="addressLat" hidden type="text" onchange="getWeather()"/>
+                    <input id="addressLat" hidden type="text"/>
                     <label for="address" class="active">Address</label>
                 </div>
-                <div id="weather" class="card horizontal weather">
-                    <div class="card-stacked">
+                <div class="row">
+                    <div id="weather" class="col s12 m4 weather">
+
                     </div>
-                  </div>
+                </div>
                 <div class="input-field">
                     <input id="memos" type="text">
                     <label for="memos" class="active">Memos</label>
                 </div>
                 <div class="row s12">
                     <div class="input-field col s6">
-                        <input type="text" id="start-date" class="datepicker">
+                        
+                        <input type="text" id="start-date" class="datepicker"/>
                         <label for="start-date">Start Date</label>
+                        
                     </div>
                     <div class="input-field col s6">
                         <input type="text" id="end-date" class="datepicker">
                         <label for="end-date">End Date</label>
                     </div>
+                </div>
+                <div id="start-date-history">
                 </div>
                 <p>
                     <label>
@@ -207,6 +212,7 @@
         <script
             src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.3/mapbox-gl-geocoder.min.js'></script>
         <script src="assets/js/mapbox.js"></script>
+        <script src="assets/js/weather.js"></script>
         <script src="assets/js/script.js"></script>
     </main>
 </body>
