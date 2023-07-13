@@ -78,16 +78,9 @@ $(document).ready(function () {
     $('#memos').val(bucket.memos);
     $('#budget').val(bucket.budget);
 
-
     // set the dates
     $('#start-date').val(bucket.startdate);
     $('#end-date').val(bucket.enddate);
-
-    //set Lat and Long
-    $('#addressLong').val(bucket.addressLong);
-    $('#addressLong').trigger("change");
-    $('#addressLat').val(bucket.addressLat);
-    $('#addressLat').trigger("change");
 
     // Set checkbox status
     $('#tickets_needed').prop('checked', bucket.ticketsNeeded);
@@ -224,93 +217,3 @@ $(document).ready(function () {
 
 
 });
-//updating weather data based on Long and Lat
-var APIKey="598dc121f9e0e587ba86da32aa3fa923";
-
-function getWeather() {
-
-  var addressLong = $("#addressLong").val();
-  var addressLat = $("#addressLat").val();
-  
-  var weatherAPI="https://api.openweathermap.org/data/2.5/weather?lat=" + addressLat + "&lon=" + addressLong + "&appid=" + APIKey +"&units=imperial";
-
-  //console.log(weatherAPI);
-
-  fetch(weatherAPI)
-    .then(function (response) {
-      return response.json();
-      
-    })
-    .then(function (data) { 
-        var temperature = data.main.temp;
-        var humidity = data.main.humidity;
-        var wind = data.wind.speed;
-        var date = dayjs.unix(data.dt).format('MM/DD/YYYY');
-        var weatherIcon = data.weather[0].icon;
-        var weatherInfo;
-
-        weatherInfo = {
-          temperature: temperature,
-          humidity: humidity,
-          wind: wind,            
-          date:date ,
-          weatherIcon: weatherIcon
-         }
-        return weatherInfo;
-    })
-    .then(function (data) {
-        var htmlstring = '';
-        var weatherDiv = $("#weather");
-        weatherDiv.empty();
-        htmlstring += "<div class='card-content rgba(0,0,0,0.87)''>";
-        htmlstring += "<img id='icon' class='responsive-img'"+" src='https://openweathermap.org/img/w/" + data.weatherIcon + ".png' alt='Weather Icon'>";
-        htmlstring += "</span>";
-        htmlstring += "<ul>";
-        htmlstring += "<li>Temp: "+data.temperature +" &#8457;</li>";
-        htmlstring += "<li>Wind: "+data.wind +" MPH</li>";
-        htmlstring += "<li>Humidity: "+data.humidity +" %</li>";
-        htmlstring += "</ul>";
-        htmlstring += "</div>";
-        weatherDiv.append(htmlstring);
-    })
-
-}  
-
-function fetchHistorical(e){
-  var day = $(e).val();
-  var weatherHistory = [];
-  let sumTemperature = 0; // Accumulator for temperature
-  let sumHumidity = 0; // Accumulator for humidity
-
-  // Calculate the maximum number of iterations based on remaining days to reach 30
-  const remainingDays = 30 - day + 1;
-  const maxIterations = Math.min(3, remainingDays);
-
-  // Iterate for the specified limit, incrementing the day value at each iteration
-  for (let i = 0; i < maxIterations; i++) {
-    // Calculate the current day value within the range of "day" and 30
-    const currentDay = (day + i) > 30 ? (day + i - 30) : (day + i); 
-    fetchHistoricalData(currentDay, month, addressLong, addressLat)
-      .then(data => {
-        weatherHistory.push([data.result.temp.mean, data.result.humidity.mean, data.result.wind.mean, data.result.precipitation.mean]);
-        console.table(weatherHistory);
-      })
-      .catch(error => {
-        // Handle any errors that occur during the fetch or processing
-        console.error('An error occurred:', error);
-      });
-  }
-
-}
-
-
-function fetchHistoricalData(day, month, addressLong, addressLat) {
-  const url = `https://history.openweathermap.org/data/2.5/aggregated/day?lat=${addressLat}&lon=${addressLong}&day=${day}&month=${month}&appid=${APIKey}&units=imperial`;
-
-  return fetch(url)
-    .then(response => response.json())
-    .then(data => {
-      console.log(url); 
-      return data;
-    });
-}
