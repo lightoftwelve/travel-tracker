@@ -7,12 +7,9 @@ geocoder.on('result', function (e) {
     if (result.place_name) {
         var coordinates = result.geometry.coordinates;
         console.log("Coordinates:", coordinates); // Logging the coordinates
-        var urlParams = new URLSearchParams(window.location.search); //gets the destination address
-        var address = urlParams.get('address'); //makes the address the destination address
-    
-        if (address){
-          getWeather(coordinates[0], coordinates[1]);
-        }
+        $('#addressLong').val(coordinates[0]);
+        $('#addressLat').val(coordinates[1]);
+        getWeather(coordinates[0], coordinates[1]);
     }
 });
 
@@ -45,7 +42,7 @@ $(document).ready(function() {
         var startDate = $(this).val();
         var addressLong = $('#addressLong').val();
         var addressLat = $('#addressLat').val();
-
+        
         if ((startDate !='') && (addressLong != '') && (addressLat !='')) {
             getHistoricalWeather(startDate, addressLong, addressLat)
             .then(weatherData => {
@@ -90,20 +87,26 @@ function getWeather(addressLong, addressLat) {
         weatherDiv.empty();
 
         htmlstring += "<div class='card-panel lighten-5 z-depth-1'>";
-        htmlstring += "<div class='row'><div class='col s12 center'><h6>Today's weather</h6></div></div>";
+
         htmlstring += "<div class='row valign-wrapper'>";
        
         htmlstring += "<div class='col s6 m6'>";
                         
         htmlstring += "<img id='icon' class='responsive-img'"+" src='https://openweathermap.org/img/wn/" + data.weatherIcon + "@2x.png' alt='Weather Icon' class='responsive-img valign'/>";
-        htmlstring += "<h2>"+data.temperature +" &#8457;</h2>";
+        
         htmlstring += "</div>";
         htmlstring += "<div class='col s6 m6'>";
-        htmlstring += "<span class='black-text'>";                 
+        htmlstring += "<h2>"+data.temperature +"&#8457;</h2>";
+        htmlstring += "<span class='black-text data'>";                 
         htmlstring += "Wind: "+data.wind +" MPH<br/>";
         htmlstring += "Humidity: "+data.humidity +" %";               
         htmlstring += "</span>";
-        htmlstring += "</div></div></div>";                    
+        htmlstring += "</div>";
+        htmlstring += "</div>";
+        htmlstring += "<div class='card-actions center'>";
+        htmlstring += "Today's weather";
+        htmlstring += "</div>";
+        htmlstring += "</div>";                    
                              
         weatherDiv.append(htmlstring);
     })
@@ -159,7 +162,8 @@ function updateWeatherDiv(weatherData) {
     var humidRow = "";
     var weatherRow = "";
 
-    htmlstring += "<table class='forecast grey lighten-5'>";
+    htmlstring += "<div class='row s12'><div class='col s12'>";
+    htmlstring += "<table class='forecast grey lighten-5 z-depth-1'>";
     htmlstring += "<tr><th>Last Year</th>";
     tempratureRow += "<tr><td>Temprature</td>";
     windRow += "<tr><td>Wind</td>";
@@ -184,6 +188,7 @@ function updateWeatherDiv(weatherData) {
     htmlstring += humidRow + "</tr>";
     htmlstring += weatherRow + "</tr>";
     htmlstring += "</table>";
+    htmlstring += "</div></div>";
     
     return htmlstring;
 }

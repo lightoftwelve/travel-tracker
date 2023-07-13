@@ -120,7 +120,6 @@ function flyToAddress(address) {
   geocoder.query(address, function(results) {
     if (results.features.length > 0) {
       var coordinates = results.features[0].geometry.coordinates;
-      console.log(coordinates);
       map.flyTo({
         center: coordinates,
         zoom: 12
