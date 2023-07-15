@@ -7,6 +7,9 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css' rel='stylesheet' />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/materialize.css">
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body>
@@ -16,27 +19,43 @@
         </nav>
     </header>
     <main>
-        <div class="row">
-            <!-- First column -->
-            <div class="col s12 m3">
-                <div class="myAdventures">
-                    <h5>My Adventures</h5>
-                    <div class="row">
+        <div id="loading">
+            <div class="preloader-wrapper big active">
+                <div class="spinner-layer spinner-blue-only">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="gap-patch">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row hidden lazyLoadContainer">
+            <div class="col s12 m3 adventureCol">
+                <div class="dashTitleContainers">
+                    <span class="dashboardTitle">My Adventures</span>
+                </div>
+                <!-- <div class="myAdventures">
+                    <div class="adventureBackground">
+                        <div class="row">
                         <div class="col s6">
                             <button id="add_button" class="btn waves-effect waves-light custom-button" type="submit"
                                 name="action">
                                 <i class="material-icons center">add</i>
                             </button>
-                        </div>
-                        <div class="col s6">
                             <button id="delete_button" class="btn waves-effect waves-light custom-button" type="submit"
                                 name="action">
                                 <i class="material-icons center">delete</i>
                             </button>
                         </div>
+                        </div>
                     </div>
-                </div>
-                <div class="input-field col s12">
+                </div> -->
+                <!-- <div class="input-field col s12">
                     <select id="dropdown">
                         <option value="" disabled selected>Choose Category</option>
                         <option value="activities">Activities</option>
@@ -67,157 +86,212 @@
                         <option value="wildlife">Wildlife</option>
                     </select>
                     <label>List Selection</label>
-                </div>
+                </div> -->
                 <ul id="list_area" class="collection">
                     <!-- List items are appended here -->
                 </ul>
             </div>
             <!-- Second column -->
-            <div class="col s12 m9">
-                <h5>Planning</h5>
+            <div class="col s12 m9 dashboardCol">
+                <div class="dashTitleContainers">
+                    <span class="dashboardTitle">Planning</span>
+                </div>
                 <!-- Start of map code for html -->
-                <div id='map' style='height: 350px;'>
-                    <div class="search-container" class="row valign-wrapper">
-                        <div class="input-field col s9">
-                            <input type="text" id="search" class="search-bar" placeholder="Enter a location"
-                                oninput="fetchSuggestions()">
-                            <div class="suggestions-container">
-                                <div id="suggestions"></div>
+                <div class="dashboardContents">
+                    <div id='map' style='height: 350px;'>
+                        <div class="search-container row valign-wrapper">
+                            <div class="input-field col s8 m9">
+                                <input type="text" id="search" class="search-bar" placeholder="Enter a location"
+                                    oninput="fetchSuggestions()">
+                                <div class="suggestions-container">
+                                    <div id="suggestions"></div>
+                                </div>
+                            </div>
+                            <div class="col s4 m3">
+                                <div class="button-select-container">
+                                    <button id="search-button" class="searchBtn">
+                                        <i class="material-icons">search</i>
+                                    </button>
+                                    <div id="style-select-container">
+                                        <select id="style-select">
+                                            <option value="mapbox://styles/mapbox/satellite-streets-v12">SATELLITE
+                                            </option>
+                                            <option value="mapbox://styles/mapbox/streets-v11">STREETS</option>
+                                            <option value="mapbox://styles/mapbox/outdoors-v11">OUTDOORS</option>
+                                            <option value="mapbox://styles/mapbox/light-v10">LIGHT</option>
+                                            <option value="mapbox://styles/mapbox/dark-v10">DARK</option>
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="col s3">
-                            <button id="search-button" class="searchBtn">
-                                <i class="material-icons">search</i>
-                                <span>SEARCH</span>
-                            </button>
+                    </div>
+                    <!-- End of map code for html -->
+                    <div class="input-field">
+                        <input id="title" type="text">
+                        <label for="title" class="active">Title</label>
+                    </div>
+                    <!-- <button id="add_button" class="btn waves-effect waves-light custom-button" type="submit"
+                        name="action">
+                        <i class="material-icons center">add</i>
+                    </button> -->
+                    <div class="input-field">
+                        <input id="address" type="text">
+                        <!-- hidden inputs to store Long, Lat of the selected place -->
+                        <input id="addressLong" hidden type="text" />
+                        <input id="addressLat" hidden type="text" />
+                        <label for="address" class="active">Address</label>
+                    </div>
+                    <div id="weather" class="card horizontal weather">
+                        <div class="card-stacked">
                         </div>
-                        <div>
-                            <select id="style-select">
-                              <option value="mapbox://styles/mapbox/satellite-streets-v12">Satellite</option>
-                              <option value="mapbox://styles/mapbox/streets-v11">Streets</option>
-                              <option value="mapbox://styles/mapbox/outdoors-v11">Outdoors</option>
-                              <option value="mapbox://styles/mapbox/light-v10">Light</option>
-                              <option value="mapbox://styles/mapbox/dark-v10">Dark</option>
-                            </select>
-                          </div>                          
                     </div>
-                </div>
-                <!-- End of map code for html -->
-                <div class="input-field">
-                    <input id="title" type="text">
-                    <label for="title" class="active">Title</label>
-                </div>
-                <div class="input-field">
-                    <input id="address" type="text">
-                    <!-- hidden inputs to store Long, Lat of the selected place -->
-                    <input id="addressLong" hidden type="text"/>
-                    <input id="addressLat" hidden type="text"/>
-                    <label for="address" class="active">Address</label>
-                </div>
-                <div class="row">
-                    <div id="weather" class="col s12 m4 weather">
+                    <!-- <div class="row">
+                        <div id="weather" class="col s12 m4 weather">
+                        </div>
+                    </div> -->
 
+                    <div class="input-field">
+                        <input id="memos" type="text">
+                        <label for="memos" class="active">Memos</label>
                     </div>
-                </div>
-                <div class="input-field">
-                    <input id="memos" type="text">
-                    <label for="memos" class="active">Memos</label>
-                </div>
-                <div class="row s12">
-                    <div class="input-field col s6">
-                        
-                        <input type="text" id="start-date" class="datepicker"/>
-                        <label for="start-date">Start Date</label>
-                        
+                    <div class="row s12">
+                        <div class="input-field col s6">
+                            <input type="text" id="start-date" class="datepicker">
+                            <label for="start-date">Start Date</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input type="text" id="end-date" class="datepicker">
+                            <label for="end-date">End Date</label>
+                        </div>
                     </div>
-                    <div class="input-field col s6">
-                        <input type="text" id="end-date" class="datepicker">
-                        <label for="end-date">End Date</label>
+                    <div id="start-date-history">
                     </div>
-                </div>
-                <div id="start-date-history">
-                </div>
-                <p>
-                    <label>
-                        <input id="tickets_needed" type="checkbox">
-                        <span>Tickets Needed</span>
-                    </label>
-                </p>
-                <p>
-                    <label>
-                        <input id="completed" type="checkbox">
-                        <span>Completed</span>
-                    </label>
-                </p>
+                    <p>
+                        <label>
+                            <input id="tickets_needed" type="checkbox">
+                            <span>Tickets Needed</span>
+                        </label>
+                    </p>
+                    <p>
+                        <label>
+                            <input id="completed" type="checkbox">
+                            <span>Completed</span>
+                        </label>
+                    </p>
 
-                <div class="input-field">
-                    <input id="budget" type="number">
-                    <label for="budget" class="active">Budget</label>
+                    <div class="input-field">
+                        <input id="budget" type="number">
+                        <label for="budget" class="active">Budget</label>
+                    </div>
+                    <p>
+                        <label>
+                            <input id="budget_toggle" type="checkbox">
+                            <span>Show/Hide Budget</span>
+                        </label>
+                    </p>
+                    <div class="input-field">
+                        <select id="category">
+                            <option value="" disabled selected>Choose Category</option>
+                            <option value="activities">Activities</option>
+                            <option value="adventure">Adventure</option>
+                            <option value="beach">Beach</option>
+                            <option value="camping">Camping</option>
+                            <option value="cultural-events">Cultural Events</option>
+                            <option value="education">Education</option>
+                            <option value="festivals-events">Festivals and Events</option>
+                            <option value="fitness">Fitness</option>
+                            <option value="food-drinks">Food and Drinks</option>
+                            <option value="hiking">Hiking</option>
+                            <option value="historical-landmarks">Historical Landmarks</option>
+                            <option value="islands">Islands</option>
+                            <option value="museums-art-galleries">Museums & Art Galleries</option>
+                            <option value="natural-wonders">Natural Wonders</option>
+                            <option value="nightlife">Nightlife</option>
+                            <option value="outdoors">Outdoors</option>
+                            <option value="restaurants">Restaurants</option>
+                            <option value="road-trips">Road Trips</option>
+                            <option value="skills">Skills</option>
+                            <option value="spas">Spas</option>
+                            <option value="sports">Sports</option>
+                            <option value="travel-destinations">Travel Destinations</option>
+                            <option value="volunteer-work">Volunteer Work</option>
+                            <option value="water-activities">Water Activities</option>
+                            <option value="wellness-activities">Wellness Activities</option>
+                            <option value="wildlife">Wildlife</option>
+                        </select>
+                        <label for="category">Category</label>
+                    </div>
+                    <button id="save_button" class="btn waves-effect waves-light" type="submit" name="action">Save
+                        <i class="material-icons right">save</i>
+                    </button>
+                    <button id="refresh_button" class="btn waves-effect waves-light" type="submit" name="action">Refresh
+                        <i class="material-icons right">autorenew</i>
+                    </button>
                 </div>
-                <p>
-                    <label>
-                        <input id="budget_toggle" type="checkbox">
-                        <span>Show/Hide Budget</span>
-                    </label>
-                </p>
-                <div class="input-field">
-                    <select id="category">
-                        <option value="" disabled selected>Choose Category</option>
-                        <option value="activities">Activities</option>
-                        <option value="adventure">Adventure</option>
-                        <option value="beach">Beach</option>
-                        <option value="camping">Camping</option>
-                        <option value="cultural-events">Cultural Events</option>
-                        <option value="education">Education</option>
-                        <option value="festivals-events">Festivals and Events</option>
-                        <option value="fitness">Fitness</option>
-                        <option value="food-drinks">Food and Drinks</option>
-                        <option value="hiking">Hiking</option>
-                        <option value="historical-landmarks">Historical Landmarks</option>
-                        <option value="islands">Islands</option>
-                        <option value="museums-art-galleries">Museums & Art Galleries</option>
-                        <option value="natural-wonders">Natural Wonders</option>
-                        <option value="nightlife">Nightlife</option>
-                        <option value="outdoors">Outdoors</option>
-                        <option value="restaurants">Restaurants</option>
-                        <option value="road-trips">Road Trips</option>
-                        <option value="skills">Skills</option>
-                        <option value="spas">Spas</option>
-                        <option value="sports">Sports</option>
-                        <option value="travel-destinations">Travel Destinations</option>
-                        <option value="volunteer-work">Volunteer Work</option>
-                        <option value="water-activities">Water Activities</option>
-                        <option value="wellness-activities">Wellness Activities</option>
-                        <option value="wildlife">Wildlife</option>
-                    </select>
-                    <label for="category">Category</label>
+            </div>
+    </main>
+
+    <footer class="page-footer">
+        <div class="container">
+            <div class="row">
+
+                <div class="col l4 s12">
+                    <h3 class="white-text">Team A-Z</h3>
+                    <ul>
+                        <li><a class="white-text" href="#!">Manjini lastName</a></li>
+                        <li><a class="white-text" href="#">Stanley lastName</a></li>
+                        <li><a class="white-text" href="https://github.com/lightoftwelve" target="_blank">Victoria
+                                Alawi</a></li>
+                        <li><a class="white-text" href="#!">Wen lastName</a></li>
+                    </ul>
                 </div>
-                <button id="save_button" class="btn waves-effect waves-light" type="submit" name="action">Save
-                    <i class="material-icons right">save</i>
-                </button>
-                <button id="refresh_button" class="btn waves-effect waves-light" type="submit" name="action">Refresh
-                    <i class="material-icons right">autorenew</i>
-                </button>
+                <div class="col l8 s12">
+                    <h3 class="white-text">Company Bio</h3>
+                    <p class="grey-text text-lighten-4">
+                        We are a team of four Fullstack developer students from the University of Toronto
+                        and
+                        edx,
+                        working tirelessly on this project as though it's our full-time job. The
+                        TravelTracker
+                        app
+                        is
+                        the
+                        result of our shared passion for coding and making travel planning accessible and
+                        efficient
+                        for
+                        all. Any support towards this project is highly appreciated and will help us
+                        continue to
+                        develop
+                        and enhance the user experience.
+                    </p>
+                </div>
+
+
             </div>
         </div>
+        <div class="footer-copyright">
+            <div class="container">
+                <a class="grey-text right text-lighten-3">Made in 2023</a>
+            </div>
+        </div>
+    </footer>
 
-        <script>
-            $(document).ready(function () {
-                $('#header-container').load('header.html');
-            });
-        </script>
+    <script>
+        $(document).ready(function () {
+            $('#header-container').load('header.html');
+        });
+    </script>
 
-
-        <!-- Script for mapbox attaxhed here. At the next two lines -->
-        <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
-        <script src='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js'></script>
-        <script
-            src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.3/mapbox-gl-geocoder.min.js'></script>
-        <script src="assets/js/mapbox.js"></script>
-        <script src="assets/js/weather.js"></script>
-        <script src="assets/js/script.js"></script>
+    <!-- Script for mapbox attached here. At the next few lines -->
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js'></script>
+    <script
+        src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.3/mapbox-gl-geocoder.min.js'></script>
+    <script src="assets/js/mapbox.js"></script>
+    <script src="assets/js/weather.js"></script>
+    <script src="assets/js/script.js"></script>
     </main>
 </body>
-
 
 </html>

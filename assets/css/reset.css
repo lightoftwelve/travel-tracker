@@ -1,0 +1,26 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Set default font styles */
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* Remove default hyperlink styles */
+a {
+    color: inherit;
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Remove default list styling */
+ul,
+ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
