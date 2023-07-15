@@ -1,6 +1,6 @@
-//updating weather data based on Long and Lat
 var APIKey="598dc121f9e0e587ba86da32aa3fa923";
 
+//Fetching current weather data when user navigates from 'Popular this week'.
 geocoder.on('result', function (e) {
 
     var result = e.result;
@@ -13,8 +13,9 @@ geocoder.on('result', function (e) {
     }
 });
 
-$(document).ready(function() {   
 
+$(document).ready(function() {   
+    //Fetching current weather data when user clicks on any city from the list area.
     $("#list_area").on("click", ".collection-item", function() {
       var key = $(this).attr("data-key");
       var data = JSON.parse(localStorage.getItem(key));
@@ -24,7 +25,7 @@ $(document).ready(function() {
       
       if ((data.addressLong != '') && (data.addressLat !='')){
         getWeather(data.addressLong, data.addressLat);
-
+        //Fetching Historical weather data if there is value in startdate.
         if (data.startdate !='') {
             getHistoricalWeather(data.startdate, data.addressLong, data.addressLat)
             .then(weatherData => {
@@ -32,12 +33,11 @@ $(document).ready(function() {
                 $('#start-date-history').empty().append(weatherDiv);
             });
         }
-        
-        
+                
       }
 
     });
-
+    // Display updated Historical weather data if there is a change in the startdate.
     $("#start-date").on("change", function(){
         var startDate = $(this).val();
         var addressLong = $('#addressLong').val();
@@ -54,6 +54,7 @@ $(document).ready(function() {
     
 });
 
+// get the current weather from the API based on Long, Lat
 function getWeather(addressLong, addressLat) {
   
   // update the weather api call with the Long, Lat values
@@ -114,15 +115,14 @@ function getWeather(addressLong, addressLat) {
 }  
 
 async function getHistoricalWeather(date, addressLong, addressLat) {
-    var day = dayjs(date).get('date');
     var weatherHistory = [];
   
     // Fetch historical data for multiple days
-    for (let i = 0; i < 6; i++) {
+    for (let i = 1; i <= 6; i++) {
 
         const startDate = dayjs(date).subtract(1,'year').add(i, 'day').set('hour',10).set('minute',0);
         const startTime = startDate.unix();
-        const endTime = startDate.set('hour',11).set('minute',0).unix(); 
+        const endTime = startDate.set('hour',10).set('minute',0).unix(); 
 
         const url = `https://history.openweathermap.org/data/2.5/history/city?lat=${addressLat}&lon=${addressLong}&start=${startTime}&end=${endTime}&appid=${APIKey}&units=imperial`;
         
@@ -131,6 +131,7 @@ async function getHistoricalWeather(date, addressLong, addressLat) {
             const response = await fetch(url);
             const data = await response.json();
             const weather = data.list[0];
+            console.log(data);
 
             const weatherInfo = {
                 day: dayjs(startDate).format('ddd, MMM DD'),
