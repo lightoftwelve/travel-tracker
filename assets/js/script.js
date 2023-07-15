@@ -26,12 +26,30 @@ $(document).ready(function () {
           .addClass("collection-item")
           .text(data.title)
           .attr("data-key", key); // Store the key in a data attribute
-        $("#list_area").append(item);
+          var deleteButton = $('<button>')
+          .addClass('btn btn-link delete-button')
+          .html('<span class="material-icons">delete</span>');
+        
+            item.append(deleteButton); // Append the delete button to the list item
+      
+          $("#list_area").append(item);
       }
     } catch (error) {
       console.error('Invalid JSON in localStorage for item key:', key, 'Error:', error.message);
     }
   }
+
+  // Attach the delete button functionality to all delete-button - clears the elements from the list
+  $("button[class*='delete-button']").on('click', function(){
+    var item = $(this).parent();
+    var key = item.attr("data-key");
+
+    var data = JSON.parse(localStorage.getItem(key));
+    localStorage.removeItem(key);
+
+    $(item).remove();
+  });
+
 
   // Updated click function for the list items
   $("#list_area").on("click", ".collection-item", function () {
@@ -62,7 +80,6 @@ $(document).ready(function () {
     if ($("#memos").val() !== '') $("label[for='memos']").addClass("active");
     if ($("#budget").val() !== '') $("label[for='budget']").addClass("active");
   }
-
 
   function setLabelsActive() {
     $("label[for='title']").addClass("active");
@@ -146,8 +163,10 @@ $(document).ready(function () {
     });
 
     item.append(deleteButton); // Append the delete button to the list item
-
     $("#list_area").append(item);
+
+    clearForm();
+
   });
 
   // Toggle Budget Field
@@ -158,6 +177,27 @@ $(document).ready(function () {
       $("#budget").show();
     }
   });
+  
+  $("#refresh_button").on('click', clearForm);
+
+  // clear the form input and the weather & forecast div
+  function clearForm(){
+    
+    $('#title').val('');
+    $('#address').val('');
+    $('#memos').val('');
+    $('#budget').val('');
+
+    // set the dates
+    $('#start-date').val('');
+    $('#end-date').val('');
+    
+    $('#weather').empty();
+    $('#start-date-history').empty();
+    $("#tickets_needed").prop("checked", false);
+    $("#completed").prop("checked", false);
+    $("#category").val('');
+  }
 
   // Calendar: Capture the start and end date of the plan
 
@@ -214,6 +254,5 @@ $(document).ready(function () {
       $(endDatePicker).val(dayjs(date).format('MM-DD-YYYY'));
     }
   }
-
 
 });
