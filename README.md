@@ -32,7 +32,7 @@ TravelTracker is a web application that allows users to create and manage their 
 - Google Fonts
 
 ## Live Demo
-Check out the live version of this project [here](https://lightoftwelve.github.io/travel-tracker). // Not live yet
+Check out the live version of this project [here](https://lightoftwelve.github.io/travel-tracker).
 
 ## Credits
 This project was independently developed by the following developers with their respective contact information:
