@@ -26,13 +26,13 @@ $(document).ready(function () {
           .addClass("collection-item")
           .text(data.title)
           .attr("data-key", key); // Store the key in a data attribute
-          var deleteButton = $('<button>')
+        var deleteButton = $('<button>')
           .addClass('btn btn-link delete-button')
           .html('<span class="material-icons">delete</span>');
-        
-            item.append(deleteButton); // Append the delete button to the list item
-      
-          $("#list_area").append(item);
+
+        item.append(deleteButton); // Append the delete button to the list item
+
+        $("#list_area").append(item);
       }
     } catch (error) {
       console.error('Invalid JSON in localStorage for item key:', key, 'Error:', error.message);
@@ -40,7 +40,7 @@ $(document).ready(function () {
   }
 
   // Attach the delete button functionality to all delete-button - clears the elements from the list
-  $("button[class*='delete-button']").on('click', function(){
+  $("button[class*='delete-button']").on('click', function () {
     var item = $(this).parent();
     var key = item.attr("data-key");
 
@@ -55,6 +55,8 @@ $(document).ready(function () {
   $("#list_area").on("click", ".collection-item", function () {
     var key = $(this).attr("data-key");
     var data = JSON.parse(localStorage.getItem(key));
+    console.log(`List area click event: addressLong = ${data.addressLong}, addressLat = ${data.addressLat}`);
+    getWeather(data.addressLong, data.addressLat);
 
     populateFields(data);
 
@@ -146,14 +148,9 @@ $(document).ready(function () {
     localStorage.setItem(key, JSON.stringify(data)); // stores the data from var key by converting data to JSON string and sets it in localStorage
 
     // Append to list
-    var item = $("<li>")
-      .addClass("collection-item")
-      .text(title)
-      .attr("data-key", key); // Stores the key in a data attribute
-
-    var deleteButton = $('<button>')
-      .addClass('btn btn-link delete-button')
-      .html('<span class="material-icons">delete</span>');
+    var item = $("<li>").addClass("collection-item flex-container").attr("data-key", key);
+    var titleElement = $("<span>").addClass("item-text").text(title); // Add 'item-text' class to your title
+    var deleteButton = $('<button>').addClass('btn btn-link delete-button').html('<span class="material-icons">delete</span>');
 
     deleteButton.on('click', function () {
       item.remove(); // Remove the list item from the DOM
@@ -162,11 +159,11 @@ $(document).ready(function () {
       localStorage.removeItem(key); // Remove the data from local storage using the key
     });
 
+    item.append(titleElement); // Append the title span to the list item
     item.append(deleteButton); // Append the delete button to the list item
     $("#list_area").append(item);
 
     clearForm();
-
   });
 
   // Toggle Budget Field
@@ -177,12 +174,12 @@ $(document).ready(function () {
       $("#budget").show();
     }
   });
-  
+
   $("#refresh_button").on('click', clearForm);
 
   // clear the form input and the weather & forecast div
-  function clearForm(){
-    
+  function clearForm() {
+
     $('#title').val('');
     $('#address').val('');
     $('#memos').val('');
@@ -191,7 +188,7 @@ $(document).ready(function () {
     // set the dates
     $('#start-date').val('');
     $('#end-date').val('');
-    
+
     $('#weather').empty();
     $('#start-date-history').empty();
     $("#tickets_needed").prop("checked", false);
@@ -256,3 +253,11 @@ $(document).ready(function () {
   }
 
 });
+
+setTimeout(() => {
+  $('#loading').addClass('hidden');
+  $('.lazyLoadContainer').removeClass('hidden');
+  setTimeout(() => {
+    window.dispatchEvent(new Event('resize'));
+  }, 0);
+}, 1000);
