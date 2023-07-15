@@ -16,6 +16,7 @@ $(document).ready(function () {
   });
 
   // Load data from localStorage and append to list
+  // Load data from localStorage and append to list
   for (var i = 0; i < localStorage.length; i++) {
     var key = localStorage.key(i).replace('mapbox.eventData.uuid:', ''); // Retrieve the key from localStorage and remove the "mapbox.eventData.uuid:" prefix -> replaces the substring with an empty string so that the key is the right format to be retrieved from the associated JSON data from localStorage
     try {
@@ -26,12 +27,28 @@ $(document).ready(function () {
           .addClass("collection-item")
           .text(data.title)
           .attr("data-key", key); // Store the key in a data attribute
+        var deleteButton = $('<button>')
+          .addClass('btn btn-link delete-button')
+          .html('<span class="material-icons">delete</span>');
+
+        item.append(deleteButton); // Append the delete button to the list item
+
         $("#list_area").append(item);
       }
     } catch (error) {
       console.error('Invalid JSON in localStorage for item key:', key, 'Error:', error.message);
     }
   }
+
+  $("button[class*='delete-button']").on('click', function () {
+    var item = $(this).parent();
+    var key = item.attr("data-key");
+
+    var data = JSON.parse(localStorage.getItem(key));
+    localStorage.removeItem(key);
+
+    $(item).remove();
+  });
 
   // Updated click function for the list items
   $("#list_area").on("click", ".collection-item", function () {
@@ -136,14 +153,9 @@ $(document).ready(function () {
     localStorage.setItem(key, JSON.stringify(data)); // stores the data from var key by converting data to JSON string and sets it in localStorage
 
     // Append to list
-    var item = $("<li>")
-      .addClass("collection-item")
-      .text(title)
-      .attr("data-key", key); // Stores the key in a data attribute
-
-    var deleteButton = $('<button>')
-      .addClass('btn btn-link delete-button')
-      .html('<span class="material-icons">delete</span>');
+    var item = $("<li>").addClass("collection-item flex-container").attr("data-key", key);
+    var titleElement = $("<span>").addClass("item-text").text(title); // Add 'item-text' class to your title
+    var deleteButton = $('<button>').addClass('btn btn-link delete-button').html('<span class="material-icons">delete</span>');
 
     deleteButton.on('click', function () {
       item.remove(); // Remove the list item from the DOM
@@ -152,9 +164,23 @@ $(document).ready(function () {
       localStorage.removeItem(key); // Remove the data from local storage using the key
     });
 
+    item.append(titleElement); // Append the title span to the list item
     item.append(deleteButton); // Append the delete button to the list item
 
     $("#list_area").append(item);
+
+    $('#title').val('');
+    $('#address').val('');
+    $('#memos').val('');
+    $('#budget').val('');
+
+    // set the dates
+    $('#start-date').val('');
+    $('#end-date').val('');
+
+    $("#tickets_needed").prop("checked", false);
+    $("#completed").prop("checked", false);
+    $("#category").val('');
   });
 
   // Toggle Budget Field
@@ -225,55 +251,60 @@ $(document).ready(function () {
 
 });
 //updating weather data based on Long and Lat
-var APIKey="598dc121f9e0e587ba86da32aa3fa923";
+var APIKey = "598dc121f9e0e587ba86da32aa3fa923";
 
 function getWeather() {
 
   var addressLong = $("#addressLong").val();
   var addressLat = $("#addressLat").val();
-  
-  var weatherAPI="https://api.openweathermap.org/data/2.5/weather?lat=" + addressLat + "&lon=" + addressLong + "&appid=" + APIKey +"&units=imperial";
+
+  var weatherAPI = "https://api.openweathermap.org/data/2.5/weather?lat=" + addressLat + "&lon=" + addressLong + "&appid=" + APIKey + "&units=imperial";
 
   //console.log(weatherAPI);
 
   fetch(weatherAPI)
     .then(function (response) {
       return response.json();
-      
-    })
-    .then(function (data) { 
-        var temperature = data.main.temp;
-        var humidity = data.main.humidity;
-        var wind = data.wind.speed;
-        var date = dayjs.unix(data.dt).format('MM/DD/YYYY');
-        var weatherIcon = data.weather[0].icon;
-        var weatherInfo;
 
-        weatherInfo = {
-          temperature: temperature,
-          humidity: humidity,
-          wind: wind,            
-          date:date ,
-          weatherIcon: weatherIcon
-         }
-        return weatherInfo;
     })
     .then(function (data) {
-        var htmlstring = '';
-        var weatherDiv = $("#weather");
-        weatherDiv.empty();
-        htmlstring += "<div class='card-content rgba(0,0,0,0.87)''>";
-        htmlstring += "<img id='icon' class='responsive-img'"+" src='https://openweathermap.org/img/w/" + data.weatherIcon + ".png' alt='Weather Icon'>";
-        htmlstring += "</span>";
-        htmlstring += "<ul>";
-        htmlstring += "<li>Temp: "+data.temperature +" &#8457;</li>";
-        htmlstring += "<li>Wind: "+data.wind +" MPH</li>";
-        htmlstring += "<li>Humidity: "+data.humidity +" %</li>";
-        htmlstring += "</ul>";
-        htmlstring += "</div>";
-        weatherDiv.append(htmlstring);
-    })
+      var temperature = data.main.temp;
+      var humidity = data.main.humidity;
+      var wind = data.wind.speed;
+      var date = dayjs.unix(data.dt).format('MM/DD/YYYY');
+      var weatherIcon = data.weather[0].icon;
+      var weatherInfo;
 
-        
- 
-}  
+      weatherInfo = {
+        temperature: temperature,
+        humidity: humidity,
+        wind: wind,
+        date: date,
+        weatherIcon: weatherIcon
+      }
+      return weatherInfo;
+    })
+    .then(function (data) {
+      var htmlstring = '';
+      var weatherDiv = $("#weather");
+      weatherDiv.empty();
+      htmlstring += "<div class='card-content rgba(0,0,0,0.87)''>";
+      htmlstring += "<img id='icon' class='responsive-img'" + " src='https://openweathermap.org/img/w/" + data.weatherIcon + ".png' alt='Weather Icon'>";
+      htmlstring += "</span>";
+      htmlstring += "<ul>";
+      htmlstring += "<li>Temp: " + data.temperature + " &#8457;</li>";
+      htmlstring += "<li>Wind: " + data.wind + " MPH</li>";
+      htmlstring += "<li>Humidity: " + data.humidity + " %</li>";
+      htmlstring += "</ul>";
+      htmlstring += "</div>";
+      weatherDiv.append(htmlstring);
+    })
+}
+
+setTimeout(() => {
+  $('#loading').addClass('hidden');
+  $('.lazyLoadContainer').removeClass('hidden');
+  setTimeout(() => {
+    window.dispatchEvent(new Event('resize'));
+  }, 0);
+}, 1000);

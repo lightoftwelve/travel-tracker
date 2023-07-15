@@ -5,8 +5,8 @@
     --black: #000000;
     --accent: #B4D330;
     --main: #04566E;
-    --dpurple: #D8DFE9;
-    --dark: #022831;
+    --dpurple: #f4f7f9;
+    --dark: #505050bb;
     --grey: #022831;
     text-decoration: none;
 }
@@ -22,10 +22,6 @@ body {
     padding-left: 10px;
 }
 
-nav {
-    background-color: var(--main);
-    color: var(--white);
-}
 
 h1,
 h2,
@@ -52,6 +48,50 @@ nav .brand-logo {
     font-size: 26px;
 }
 
+.lazyLoadContainer {
+    margin: 0;
+}
+
+.hidden {
+    display: none !important;
+}
+
+#loading {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.adventureCol {
+    background-color: var(--dpurple);
+    height: 1300px;
+    margin: 0;
+    padding: 0 !important;
+    border-right: 1px solid var(--dark);
+}
+
+.dashboardCol {
+    padding: 0 !important;
+}
+
+.dashTitleContainers {
+    padding: 15px 20px;
+    background-color: var(--dpurple);
+    border-bottom: 1px solid var(--dark);
+    justify-content: left;
+}
+
+.dashboardContents {
+    padding: 10px;
+}
+
+.dashboardTitle {
+    font-size: 20px;
+    padding: 0;
+}
+
 .hero-container {
     width: 100%;
     margin: 0 auto;
@@ -60,7 +100,6 @@ nav .brand-logo {
 nav ul a:hover {
     background-color: var(--accent);
 }
-
 
 .slider .indicators .indicator-item.active {
     background-color: var(--accent);
@@ -197,22 +236,23 @@ nav ul a:hover {
 
 .word-loop-container {
     padding-top: 20px;
-    height: 200px;
+    height: auto;
     margin: 0;
-    overflow: hidden;
+    width: 100%;
     font-size: 100px;
     color: #00000030;
 }
 
 .word-loop {
+    display: inline-block;
     white-space: nowrap;
-    animation: wordLoop 20s linear infinite;
+    animation: wordLoop 40s linear infinite;
     font-size: 200px;
     color: #ffffff64;
 }
 
 @keyframes wordLoop {
-    0% {
+    100% {
         transform: translateX(100%);
     }
 
@@ -221,11 +261,80 @@ nav ul a:hover {
     }
 }
 
+.flex-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.item-text {
+    flex: 1;
+}
+
+.item-text {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+}
+
+.parent-class {
+    display: flex;
+}
+
+div.input-field.col.s12 {
+    padding: 0;
+    margin: 0;
+}
+
+#list_area {
+    max-height: 1240px;
+    overflow-y: auto;
+}
+
+/* list area nav */
+#list_area::-webkit-scrollbar {
+    width: 10px;
+    /* width of list scrollbar */
+}
+
+#list_area::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    /* tracking area */
+}
+
+#list_area::-webkit-scrollbar-thumb {
+    background: var(--main);
+    /* scroll colour */
+}
+
+ul#list_area.collection {
+    padding: 0;
+    margin: 0;
+}
+
+li.collection-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.collection-item {
+    padding: 10px !important;
+}
+
+.collection-item.flex-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .btn,
 .custom-button,
 .searchBtn,
 #save_button {
-    padding: 10px 50px;
+    padding: 10px 10px;
     background-color: rgba(255, 255, 255, 0.879);
     border: 1px solid var(--main);
     color: var(--main);
@@ -236,19 +345,54 @@ nav ul a:hover {
 
 .custom-button:hover,
 .searchBtn:hover,
-#save_button:hover {
+#save_button:hover,
+.delete-button:hover {
     background-color: var(--main);
     color: var(--white);
 }
 
-.search-container {
+.select-wrapper,
+input.select-dropdown,
+.dropdown-content li,
+.dropdown-content li>span {
+    background-color: rgba(255, 255, 255, 0.879);
+    color: var(--main);
+    margin: 0;
+    font-size: small;
+}
+
+input.select-dropdown.dropdown-trigger,
+.month-prev,
+.month-next,
+.datepicker-table,
+.datepicker-footer {
+    margin: 0;
+}
+
+.month-prev,
+.month-next,
+.datepicker-table,
+.datepicker-footer,
+.datepicker-container {
+    background-color: rgba(255, 255, 255, 0.879);
+
+}
+
+.search-container,
+input.select-dropdown.dropdown-trigger {
     position: relative;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 1;
+    padding-left: 10px;
     font-size: small;
+}
+
+.datepicker-cancel,
+.datepicker-done {
+    color: var(--main);
 }
 
 #search {
@@ -284,14 +428,30 @@ nav ul a:hover {
 }
 
 #suggestions .suggestion:hover,
-#suggestions .suggestion:focus {
+#suggestions .suggestion:focus,
+.dropdown-content li>span:hover,
+.dropdown-content li>span:focus {
     background-color: var(--main);
     color: var(--white);
     outline: none;
 }
 
-/* Style for suggestion bar ends here */
+.button-select-container {
+    display: flex;
+    align-items: center;
+}
 
+#search-button {
+    margin-right: 10px;
+}
+
+#style-select {
+    width: 200px;
+    padding: 8px;
+    font-size: 14px;
+}
+
+/* Style for suggestion bar ends here */
 .searchBtn:focus {
     color: var(--white);
     background-color: #04556ece;
@@ -310,6 +470,8 @@ nav ul a:hover {
     background-color: var(--accent);
 }
 
+
+
 footer.page-footer {
     background-color: var(--main);
     margin: 0;
@@ -323,18 +485,23 @@ footer.page-footer {
         padding: 20px;
     }
 
-    .searchBtn {
-        padding: 1px 20px;
-    }
-
-    .searchBtn i {
-        display: none;
-
-    }
-
     .searchBtn span {
         display: inline-block;
         vertical-align: middle;
+    }
+
+    #style-select-container {
+        display: none;
+    }
+
+    .adventureCol {
+        height: 360px;
+    }
+
+    #list_area {
+        height: 300px;
+        overflow-y: scroll;
+        margin-bottom: 30px;
     }
 }
 
@@ -357,40 +524,41 @@ footer.page-footer {
 
 /* Map container */
 #map {
-  height: 400px;
+    height: 400px;
+    width: 100%;
 }
 
 /* Map style select dropdown */
 #style-select {
-  width: 200px;
-  padding: 8px;
-  font-size: 14px;
+    width: 200px;
+    padding: 8px;
+    font-size: 14px;
 }
 
 /* Suggestions container */
 #suggestions {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  z-index: 1;
-  width: 100%;
-  max-height: 200px;
-  overflow-y: auto;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-top: none;
-  display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    max-height: 200px;
+    overflow-y: auto;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-top: none;
+    display: none;
 }
 
 #suggestions.visible {
-  display: block;
+    display: block;
 }
 
 .suggestion {
-  padding: 8px;
-  cursor: pointer;
+    padding: 8px;
+    cursor: pointer;
 }
 
 .suggestion:hover {
-  background-color: #f4f4f4;
+    background-color: #f4f4f4;
 }

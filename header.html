@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Header | TravelTracker</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/materialize.css">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
@@ -15,17 +17,21 @@
     <header>
         <nav>
             <div class="nav-wrapper">
-                <a href="index.html" class="brand-logo left">
-                    <i class="material-icons custom-icon airplane-icon">flight_takeoff</i>
-                    TravelTracker
+                <a href="index.html" class="brand-logo left"
+                    style="font-size: 20px; display: flex; align-items: center; margin-left: 10px;"
+                    aria-label="Travel Tracker">
+                    <img src="assets/images/logo-travel-tracker.png" alt="Travel Tracker Logo"
+                        style="height: 50px; width: 50px;">
+                    <span style="margin-left: 5px;">TRAVELTRACKER</span>
                 </a>
-                <a href="#" data-target="mobile-nav" class="sidenav-trigger right"><i
-                        class="material-icons">menu</i></a>
-                <ul class="right hide-on-med-and-down">
-                    <li><a href="bucketlist.html">BUCKETLIST</a></li>
-                    <li><a href="about.html">ABOUT</a></li>
-                    <li><a href="contact.html">CONTACT</a></li>
-                </ul>
+
+                <div class="rightNav">
+                    <a href="#" data-target="mobile-nav" class="sidenav-trigger right"><i
+                            class="material-icons">menu</i></a>
+                    <ul class="right hide-on-med-and-down">
+                        <li><a href="bucketlist.html">BUCKETLIST</a></li>
+                    </ul>
+                </div>
             </div>
         </nav>
     </header>
@@ -33,8 +39,6 @@
     <!-- Mobile Navigation -->
     <ul class="sidenav" id="mobile-nav">
         <li><a href="bucketlist.html">BUCKETLIST</a></li>
-        <li><a href="about.html">ABOUT</a></li>
-        <li><a href="contact.html">CONTACT</a></li>
     </ul>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -42,7 +46,7 @@
     <script>
         $(document).ready(function () {
             $('.sidenav').sidenav({
-                edge: 'right' // Set the edge option to 'right'
+                edge: 'right'
             });
         });
     </script>

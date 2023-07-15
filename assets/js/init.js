@@ -1,8 +1,8 @@
 (function ($) {
-  $(function () {
+    $(function () {
 
-    $('.sidenav').sidenav();
-    $('.parallax').parallax();
+        $('.sidenav').sidenav();
+        $('.parallax').parallax();
 
-  });
+    });
 })(jQuery);

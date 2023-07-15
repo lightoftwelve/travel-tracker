@@ -34,6 +34,8 @@ geocoder.on('result', function (e) {
   if (result.place_name) {
     addressInput.value = result.place_name;
     $(addressInput).siblings("label").addClass("active");
+    addressInput.focus();
+    M.updateTextFields();
   }
 });
 
@@ -97,8 +99,8 @@ function fetchSuggestions() {
     .catch(error => console.log(error));
 }
 
-$(document).ready(function() {
-  $("#list_area").on("click", ".collection-item", function() {
+$(document).ready(function () {
+  $("#list_area").on("click", ".collection-item", function () {
     var key = $(this).attr("data-key");
     var data = JSON.parse(localStorage.getItem(key));
 
@@ -117,7 +119,7 @@ if (address) {
 } //flies to the address
 
 function flyToAddress(address) {
-  geocoder.query(address, function(results) {
+  geocoder.query(address, function (results) {
     if (results.features.length > 0) {
       var coordinates = results.features[0].geometry.coordinates;
 
