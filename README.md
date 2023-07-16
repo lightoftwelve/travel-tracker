@@ -47,6 +47,7 @@ This project was independently developed by the following developers with their 
 
 <b>Wen Ding Chen</b>:
 - Github: [@landdoraine](https://github.com/Landdoraine)
+- LinkedIn: [@Wen Ding Chen](https://www.linkedin.com/in/wen-ding-chen-22a9a6283/)
 
 <b>Stanley Opare</b>:
 - Github: [@stanop09](https://github.com/StanOp09)
