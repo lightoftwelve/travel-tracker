@@ -92,6 +92,7 @@ $(document).ready(function () {
 
   // function to set the labels to active when loading data from localStorage. It directly adds labels without checking the values of the input fields
   function populateFields(bucket) {
+    clearForm();
     $('#title').val(bucket.title);
     $('#address').val(bucket.address);
     $('#memos').val(bucket.memos);

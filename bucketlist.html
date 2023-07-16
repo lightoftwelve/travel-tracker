@@ -95,7 +95,17 @@
             <div class="col s12 m9 dashboardCol">
                 <div class="dashTitleContainers">
                     <span class="dashboardTitle">Planning</span>
+                    <div class="buttonContainer">
+                        <button id="save_button" class="btn waves-effect waves-light" type="submit" name="action">Save
+                            <i class="material-icons right">save</i>
+                        </button>
+                        <button id="refresh_button" class="btn waves-effect waves-light" type="submit"
+                            name="action">Refresh
+                            <i class="material-icons right">autorenew</i>
+                        </button>
+                    </div>
                 </div>
+
                 <!-- Start of map code for html -->
                 <div class="dashboardContents">
                     <div id='map' style='height: 350px;'>
@@ -127,25 +137,60 @@
                         </div>
                     </div>
                     <!-- End of map code for html -->
-                    <div class="input-field">
-                        <input id="title" type="text">
-                        <label for="title" class="active">Title</label>
-                    </div>
-                    <div class="input-field">
-                        <input id="address" type="text">
-                        <!-- hidden inputs to store Long, Lat of the selected place -->
-                        <input id="addressLong" hidden type="text" />
-                        <input id="addressLat" hidden type="text" />
-                        <label for="address" class="active">Address</label>
-                    </div>
-                    <div id="weather" class="card horizontal weather">
-                        <div class="card-stacked">
+                    <div class="row d-flex align-items-stretch">
+                        <div class="col s12 m8 weatherBucketTitle">
+                            <div class="input-field">
+                                <input id="title" type="text">
+                                <label for="title" class="active">Title</label>
+                            </div>
+                            <div class="input-field">
+                                <input id="address" type="text">
+                                <!-- hidden inputs to store Long, Lat of the selected place -->
+                                <input id="addressLong" hidden type="text" />
+                                <input id="addressLat" hidden type="text" />
+                                <label for="address" class="active">Address</label>
+                            </div>
+                            <div class="input-field">
+                                <textarea id="memos" class="materialize-textarea initial-height"></textarea>
+                                <label for="memos" class="active">Memos</label>
+                            </div>
+                        </div>
+
+                        <div class="col s12 m4 weatherChecks">
+                            <div class="row">
+                                <div class="col s12 weatherCard">
+                                    <div id="weather" class="card weather"></div>
+                                </div>
+                            </div>
+
+                            <div class="col s12 checkboxesContainer">
+                                <div class="tickets">
+                                    <p>
+                                        <label>
+                                            <input id="tickets_needed" type="checkbox">
+                                            <span>Tickets Needed</span>
+                                        </label>
+                                    </p>
+                                </div>
+                                <div class="completed">
+                                    <p>
+                                        <label>
+                                            <input id="completed" type="checkbox">
+                                            <span>Completed</span>
+                                        </label>
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="input-field">
-                        <input id="memos" type="text">
-                        <label for="memos" class="active">Memos</label>
-                    </div>
+
+
+
+
+
+
+
+
                     <div class="row s12">
                         <div class="input-field col s6">
                             <input type="text" id="start-date" class="datepicker">
@@ -158,18 +203,8 @@
                     </div>
                     <div id="start-date-history">
                     </div>
-                    <p>
-                        <label>
-                            <input id="tickets_needed" type="checkbox">
-                            <span>Tickets Needed</span>
-                        </label>
-                    </p>
-                    <p>
-                        <label>
-                            <input id="completed" type="checkbox">
-                            <span>Completed</span>
-                        </label>
-                    </p>
+
+
 
                     <div class="input-field">
                         <input id="budget" type="number">
@@ -213,14 +248,9 @@
                         </select>
                         <label for="category">Category</label>
                     </div>
-                    <button id="save_button" class="btn waves-effect waves-light" type="submit" name="action">Save
-                        <i class="material-icons right">save</i>
-                    </button>
-                    <button id="refresh_button" class="btn waves-effect waves-light" type="submit" name="action">Refresh
-                        <i class="material-icons right">autorenew</i>
-                    </button>
                 </div>
             </div>
+        </div>
     </main>
 
     <footer class="page-footer">
@@ -228,13 +258,16 @@
             <div class="row">
 
                 <div class="col l4 s12">
-                    <h3 class="white-text">Team A-Z</h3>
+                    <h3 class="white-text">The Team A-Z</h3>
                     <ul>
-                        <li><a class="white-text" href="#!">Manjini lastName</a></li>
-                        <li><a class="white-text" href="#">Stanley lastName</a></li>
+                        <li><a class="white-text" href="https://github.com/ManjiniAbraham" target="_blank">Manjini
+                                Abraham</a></li>
+                        <li><a class="white-text" href="https://github.com/StanOp09" target="_blank">Stanley Opare</a>
+                        </li>
                         <li><a class="white-text" href="https://github.com/lightoftwelve" target="_blank">Victoria
                                 Alawi</a></li>
-                        <li><a class="white-text" href="#!">Wen lastName</a></li>
+                        <li><a class="white-text" href="https://github.com/Landdoraine" target="_blank">Wen Ding
+                                Chen</a></li>
                     </ul>
                 </div>
                 <div class="col l8 s12">

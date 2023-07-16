@@ -58,7 +58,7 @@ $(document).ready(function () {
 function getWeather(addressLong, addressLat) {
 
     // update the weather api call with the Long, Lat values
-    var weatherAPI = "https://api.openweathermap.org/data/2.5/weather?lat=" + addressLat + "&lon=" + addressLong + "&appid=" + APIKey + "&units=imperial";
+    var weatherAPI = "https://api.openweathermap.org/data/2.5/weather?lat=" + addressLat + "&lon=" + addressLong + "&appid=" + APIKey + "&units=metric";
 
     fetch(weatherAPI)
         .then(function (response) {
@@ -71,6 +71,7 @@ function getWeather(addressLong, addressLat) {
             var wind = data.wind.speed;
             var date = dayjs.unix(data.dt).format('MM/DD/YYYY');
             var weatherIcon = data.weather[0].icon;
+            var weatherDescription = data.weather[0].description;
             var weatherInfo;
 
             weatherInfo = {
@@ -78,39 +79,41 @@ function getWeather(addressLong, addressLat) {
                 humidity: humidity,
                 wind: wind,
                 date: date,
-                weatherIcon: weatherIcon
+                weatherIcon: weatherIcon,
+                desc: weatherDescription
             }
             return weatherInfo;
         })
         .then(function (data) {
-            var htmlstring = '';
             var weatherDiv = $("#weather");
             weatherDiv.empty();
 
-            htmlstring += "<div class='card-panel lighten-5 z-depth-1'>";
+            var cardPanel = $("<div>").addClass("card-panel lighten-5 z-depth-1").css("padding", "40px");
 
-            htmlstring += "<div class='row valign-wrapper'>";
+            var weatherHeader = $("<div>").addClass("weather-header").css("text-align", "center").text("Today's Weather");
+            cardPanel.append(weatherHeader);
 
-            htmlstring += "<div class='col s6 m6'>";
+            var weatherData = $("<div>").addClass("weather-data").css("display", "flex").css("flex-direction", "column").css("align-items", "center");
 
-            htmlstring += "<img id='icon' class='responsive-img'" + " src='https://openweathermap.org/img/wn/" + data.weatherIcon + "@2x.png' alt='Weather Icon' class='responsive-img valign'/>";
+            var weatherIconDesc = $("<div>").addClass("weather-icon-and-desc").css("display", "flex").css("flex-direction", "column").css("align-items", "center");
 
-            htmlstring += "</div>";
-            htmlstring += "<div class='col s6 m6'>";
-            htmlstring += "<h2>" + data.temperature + "&#8457;</h2>";
-            htmlstring += "<span class='black-text data'>";
-            htmlstring += "Wind: " + data.wind + " MPH<br/>";
-            htmlstring += "Humidity: " + data.humidity + " %";
-            htmlstring += "</span>";
-            htmlstring += "</div>";
-            htmlstring += "</div>";
-            htmlstring += "<div class='card-actions center'>";
-            htmlstring += "Today's weather";
-            htmlstring += "</div>";
-            htmlstring += "</div>";
+            var weatherIcon = $("<img>").attr("src", "https://openweathermap.org/img/wn/" + data.weatherIcon + "@2x.png").attr("alt", "Weather Icon");
 
-            weatherDiv.append(htmlstring);
+            weatherIconDesc.append(weatherIcon, $("<p>").addClass("weather-info").text(data.desc.toUpperCase()));
+
+            weatherData.append(weatherIconDesc);
+
+            var weatherStats = $("<div>").addClass("weather-stats").css("text-align", "left");
+            var temperature = $("<p>").addClass("weather-info").css("margin-top", "10px").text("Temp: " + data.temperature + "°C");
+            var wind = $("<p>").addClass("weather-info").text("Wind: " + data.wind + " KM/H");
+            var humidity = $("<p>").addClass("weather-info").text("Humidity: " + data.humidity + "%");
+            weatherStats.append(temperature, wind, humidity);
+            weatherData.append(weatherStats);
+
+            cardPanel.append(weatherData);
+            weatherDiv.append(cardPanel);
         })
+
 
 }
 
@@ -124,7 +127,7 @@ async function getHistoricalWeather(date, addressLong, addressLat) {
         const startTime = startDate.unix();
         const endTime = startDate.set('hour', 10).set('minute', 0).unix();
 
-        const url = `https://history.openweathermap.org/data/2.5/history/city?lat=${addressLat}&lon=${addressLong}&start=${startTime}&end=${endTime}&appid=${APIKey}&units=imperial`;
+        const url = `https://history.openweathermap.org/data/2.5/history/city?lat=${addressLat}&lon=${addressLong}&start=${startTime}&end=${endTime}&appid=${APIKey}&units=metric`;
 
 
         try {
@@ -175,8 +178,8 @@ function updateWeatherDiv(weatherData) {
 
         tableheader += "<th>" + dataRow.day + "</th>";
 
-        tempratureRow += "<td>" + dataRow.temp_max + " / " + dataRow.temp_min + "&#8457;</td>";
-        windRow += "<td>" + dataRow.windspeed + " MPH";
+        tempratureRow += "<td>" + dataRow.temp_max + " / " + dataRow.temp_min + "°C</td>";
+        windRow += "<td>" + dataRow.windspeed + " KM/H";
         humidRow += "<td>" + dataRow.humidity + "%</td>";
         weatherRow += "<td><img src='https://openweathermap.org/img/wn/" + dataRow.icon + "@2x.png' width='60'/><br/>" + dataRow.desc + "</td>";
 
