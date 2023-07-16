@@ -21,15 +21,15 @@ TravelTracker is a web application that allows users to create and manage their 
 ![Placeholder](./assets/images/traveltracker-screenshot1)
 
 ## Technologies Used
-- HTML
 - CSS
+- HTML
+- [DayJS](https://day.js.org/)
+- [jQuery](https://jquery.com/)
 - JavaScript
-- MapBox API
-- DayJS
-- jQuery
-- Open Weather Map API
-- Materialize
-- Google Fonts
+- [Materialize](https://materializecss.com/)
+- [MapBox API](https://www.mapbox.com/)
+- [Google Fonts](https://fonts.google.com/)
+- [Open Weather Map API](https://openweathermap.org/)
 
 ## Live Demo
 Check out the live version of this project [here](https://lightoftwelve.github.io/travel-tracker).
@@ -37,22 +37,24 @@ Check out the live version of this project [here](https://lightoftwelve.github.i
 ## Credits
 This project was independently developed by the following developers with their respective contact information:
 
-Victoria Alawi:
+<b>Victoria Alawi</b>:
 - Github: [@lightoftwelve](https://github.com/lightoftwelve)
 - LinkedIn: [@Victoria Alawi](https://www.linkedin.com/in/victoria-alawi-872984250/)
 - Website: [www.lightoftwelve.com](http://www.lightoftwelve.com)
 
-Manjini :
+<b>Manjini Abraham</b>:
 - Github: [@manjiniabraham](https://github.com/ManjiniAbraham)
+- LinkedIn: [@Manjini Abraham](https://www.linkedin.com/in/manjini-abraham/)
 
-Wen :
+<b>Wen Ding Chen</b>:
 - Github: [@landdoraine](https://github.com/Landdoraine)
 
-Stanley :
-- Github: [@stanop09](https://github.com/StanOp09) 
+<b>Stanley</b>:
+- Github: [@stanop09](https://github.com/StanOp09)
+- LinkedIn: [@Stanley Opare](https://www.linkedin.com/in/stanleyopare)
 
 ## Acknowledgements
-We sincerely thank our teacher, Sean Roshan, and TA, Serena Guo, for their invaluable guidance and support during our course.
+We sincerely thank our teacher, Sean Roshan, and TA, Serena Guo, for their invaluable guidance and support during our course, as well as their help correcting FOUC concerns on our bucketlist.html file.
 
 ## License
 The main license for this project is not available at this time.
