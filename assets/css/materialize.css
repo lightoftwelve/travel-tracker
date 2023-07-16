@@ -9132,11 +9132,6 @@ input[type=range]::-ms-thumb {
   flex: 2.5 auto;
 }
 
-.datepicker-table {
-  width: 280px;
-  font-size: 1rem;
-  margin: 0 auto;
-}
 
 .datepicker-table thead {
   border-bottom: none;
@@ -9240,11 +9235,7 @@ input[type=range]::-ms-thumb {
     flex: 0 1 270px;
   }
 
-  .datepicker-controls,
-  .datepicker-table,
-  .datepicker-footer {
-    width: 320px;
-  }
+
 
   .datepicker-day-button {
     line-height: 44px;

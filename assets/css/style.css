@@ -77,20 +77,28 @@ nav .brand-logo {
 }
 
 .dashTitleContainers {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     padding: 15px 20px;
     background-color: var(--dpurple);
     border-bottom: 1px solid var(--dark);
-    justify-content: left;
-}
-
-.dashboardContents {
-    padding: 10px;
 }
 
 .dashboardTitle {
     font-size: 20px;
     padding: 0;
 }
+
+.buttonContainer {
+    display: flex;
+    gap: 10px;
+}
+
+.dashboardContents {
+    padding: 10px;
+}
+
 
 .hero-container {
     width: 100%;
@@ -326,6 +334,48 @@ li.collection-item {
     align-items: center;
 }
 
+.initial-height {
+    height: 230px !important;
+    border: 1px solid #ccc !important;
+    padding: 10px !important;
+}
+
+.weatherTitle {
+    margin-top: 10px;
+    display: flex;
+    align-items: left;
+    justify-content: center;
+    width: 100%;
+}
+
+.weather-data {
+    font-size: small;
+}
+
+.weather-stats {
+    display: flex;
+    align-items: left;
+    justify-content: left;
+    flex-direction: column;
+}
+
+.weather-info {
+    font-weight: bold;
+    padding: 0 !important;
+}
+
+.align-items-stretch {
+    padding: 0;
+    margin: 0;
+}
+
+.checkboxes {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+
 .btn,
 .custom-button,
 .searchBtn,
@@ -499,6 +549,10 @@ footer.page-footer {
         overflow-y: scroll;
         margin-bottom: 30px;
     }
+
+    .card-panel.lighten-5.z-depth-1 {
+        padding: 20px !important;
+    }
 }
 
 @media only screen and (min-width: 992px) {
@@ -559,17 +613,6 @@ footer.page-footer {
     background-color: #f4f4f4;
 }
 
-.card.weather {
-    border-top-right-radius: 0;
-}
-
-#weather .card-panel {
-    padding: 12px;
-}
-
-#weather .card-panel .row {
-    margin-bottom: 0;
-}
 
 .data {
     font-size: 12px;
