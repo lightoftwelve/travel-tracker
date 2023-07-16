@@ -3,11 +3,12 @@
 :root {
     --white: #fff;
     --black: #000000;
-    --accent: #B4D330;
+    --accent: #1883a3;
     --main: #04566E;
     --dpurple: #f4f7f9;
     --dark: #505050bb;
     --grey: #022831;
+    --hold: #B4D330;
     text-decoration: none;
 }
 
@@ -21,7 +22,6 @@ body {
 .custom-icon {
     padding-left: 10px;
 }
-
 
 h1,
 h2,
@@ -66,7 +66,7 @@ nav .brand-logo {
 
 .adventureCol {
     background-color: var(--dpurple);
-    height: 1475px;
+    height: 1360px;
     margin: 0;
     padding: 0 !important;
     border-right: 1px solid var(--dark);
@@ -114,12 +114,81 @@ nav ul a:hover {
     color: var(--dark);
 }
 
-#get-started {
-    background-color: var(--dark);
+.centerSlide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
 }
 
-#get-started a,
-#get-started a:hover {
+.slideBackground {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.5);
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 40%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.slideBackground p:before,
+.slideBackground p:after {
+    content: "\201C";
+    font-size: 3rem;
+    position: absolute;
+    color: white;
+    opacity: 0.5;
+}
+
+.slideBackground p:before {
+    top: 0;
+    left: -35px;
+}
+
+.slideBackground p:after {
+    bottom: 0;
+    right: -35px;
+    transform: scaleX(-1);
+    /* flips quotation mark */
+}
+
+.denise-text {
+    text-align: right;
+}
+
+.denise-name {
+    margin-top: 30px;
+}
+
+.rightSlide {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    position: relative;
+}
+
+.rightSlide .slideBackground {
+    right: 0;
+    left: auto;
+}
+
+.caption h2 {
+    padding-bottom: 20px;
+}
+
+
+.get-started {
+    background-color: var(--main);
+    border: 1px solid var(--white);
+}
+
+.get-started a,
+.btn-large:hover {
     background-color: var(--accent);
 }
 
@@ -272,10 +341,6 @@ nav ul a:hover {
 }
 
 .item-text {
-    flex: 1;
-}
-
-.item-text {
     display: block;
     white-space: nowrap;
     overflow: hidden;
@@ -293,24 +358,21 @@ div.input-field.col.s12 {
 }
 
 #list_area {
-    max-height: 1415px;
+    max-height: 1300px;
     overflow-y: auto;
 }
 
 /* list area nav */
 #list_area::-webkit-scrollbar {
     width: 10px;
-    /* width of list scrollbar */
 }
 
 #list_area::-webkit-scrollbar-track {
     background: #f1f1f1;
-    /* tracking area */
 }
 
 #list_area::-webkit-scrollbar-thumb {
     background: var(--main);
-    /* scroll colour */
 }
 
 ul#list_area.collection {
@@ -517,59 +579,9 @@ input.select-dropdown.dropdown-trigger {
 }
 
 
-
 footer.page-footer {
     background-color: var(--main);
     margin: 0;
-}
-
-@media only screen and (max-width : 600px) {
-    .keyFeaturesIcons {
-        background-color: #00000011;
-        margin-top: 0;
-        margin-bottom: 50px;
-        padding: 20px;
-    }
-
-    .searchBtn span {
-        display: inline-block;
-        vertical-align: middle;
-    }
-
-    #style-select-container {
-        display: none;
-    }
-
-    .adventureCol {
-        height: 360px;
-    }
-
-    #list_area {
-        height: 300px;
-        overflow-y: scroll;
-        margin-bottom: 30px;
-    }
-
-    .card-panel.lighten-5.z-depth-1 {
-        padding: 20px !important;
-    }
-}
-
-@media only screen and (min-width: 992px) {
-    .parallax-content {
-        height: 650px;
-    }
-}
-
-@media only screen and (max-width : 992px) {
-    .parallax-container .section {
-        position: absolute;
-        top: 40%;
-    }
-
-    #index-banner .section {
-        top: 10%;
-    }
 }
 
 /* Map container */
@@ -649,4 +661,69 @@ footer.page-footer {
 
 .forecast>tbody>tr:last-child {
     font-size: 9px;
+}
+
+@media only screen and (max-width : 600px) {
+    .slider .slides li .slideBackground {
+        width: 100%;
+    }
+
+    .rightSlide .slideBackground {
+        width: 100%;
+    }
+
+    .keyFeaturesIcons {
+        background-color: #00000011;
+        margin-top: 0;
+        margin-bottom: 50px;
+        padding: 20px;
+    }
+
+    .searchBtn span {
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    #style-select-container {
+        display: none;
+    }
+
+    .adventureCol {
+        height: 360px;
+    }
+
+    #list_area {
+        height: 300px;
+        overflow-y: scroll;
+        margin-bottom: 30px;
+    }
+
+    .card-panel.lighten-5.z-depth-1 {
+        padding: 20px !important;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    .parallax-content {
+        height: 650px;
+    }
+}
+
+@media only screen and (max-width : 992px) {
+    .rightSlide .slideBackground {
+        width: 80%;
+    }
+
+    .slider .slides li .slideBackground {
+        width: 80%;
+    }
+
+    .parallax-container .section {
+        position: absolute;
+        top: 40%;
+    }
+
+    #index-banner .section {
+        top: 10%;
+    }
 }
