@@ -6,14 +6,13 @@ TravelTracker is a web application that allows users to create and manage their 
 ## Features 
 - <b>Bucket List</b>: Users can create a list of places they want to visit and track their progress. 
 - <b>Calendar Functionality</b>: Users can plan activities and trips by selecting dates on a calendar and view corresponding weather information. 
-- <b>Interactive Map</b>: Users can explore destinations and mark points of interest on the map for future reference. 
-- <b>Weather Integration</b>: TravelTracker integrates with a weather API to provide users with real-time weather information for their selected locations. 
+- <b>Interactive Map</b>: Users can explore destinations and save locations in their bucketlists for future trip planning!
+- <b>Weather Integration</b>: TravelTracker integrates with a weather API to provide users with real-time and historic weather information for their selected locations. 
 - <b>Responsive Design</b>: The application is designed to be responsive, ensuring a seamless user experience across different devices. 
 
 ## Usage Guide 
 - Start by creating your bucket list of places you want to visit. 
-- Use the calendar functionality to plan activities by selecting desired dates. 
-- Explore destinations and mark points of interest on the interactive map. 
+- Use the calendar functionality to plan activities by selecting desired dates and view historical weather to determine if that is a suitable time of year to visit. 
 - Check the weather information for your selected locations. 
 - Update and manage your itinerary as needed.
 
