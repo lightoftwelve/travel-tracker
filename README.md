@@ -17,7 +17,16 @@ TravelTracker is a web application that allows users to create and manage their 
 - Update and manage your itinerary as needed.
 
 ## Screenshots
-![Placeholder](./assets/images/traveltracker-screenshot1)
+![Placeholder](./assets/images/travel-tracker-screenshot-flavicon-and-header.jpg)
+![Placeholder](./assets/images/travel-tracker-screenshot-1-slider-and-popular-this-week.jpg)
+![Placeholder](./assets/images/travel-tracker-screenshot-2-key-features-and-how-it-works-sections.jpg)
+![Placeholder](./assets/images/travel-tracker-screenshot-3-egypt-photo-and-footer.jpg)
+![Placeholder](./assets/images/travel-tracker-screenshot-4-blank-bucket-list-and-map.jpg)
+![Placeholder](./assets/images/travel-tracker-screenshot-5-blank-bucketlist-and-footer.jpg)
+![Placeholder](./assets/images/travel-tracker-screenshot-6-weather-functionality.jpg)
+![Placeholder](./assets/images/travel-tracker-screenshot-7-calender-functionality.jpg)
+![Placeholder](./assets/images/travel-tracker-screenshot-8-forecast-functionaltiy.jpg)
+![Placeholder](./assets/images/travel-tracker-screenshot-9-dashboard-filled-in-and-with-another-map-view.jpg)
 
 ## Technologies Used
 - CSS
