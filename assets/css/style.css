@@ -641,13 +641,4 @@ footer.page-footer {
     .slider .slides li .slideBackground {
         width: 80%;
     }
-
-    .parallax-container .section {
-        position: absolute;
-        top: 40%;
-    }
-
-    #index-banner .section {
-        top: 10%;
-    }
 }
