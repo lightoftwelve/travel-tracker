@@ -17,16 +17,16 @@ TravelTracker is a web application that allows users to create and manage their 
 - Update and manage your itinerary as needed.
 
 ## Screenshots
-![Placeholder](./assets/images/travel-tracker-screenshot-flavicon-and-header.jpg)
-![Placeholder](./assets/images/travel-tracker-screenshot-1-slider-and-popular-this-week.jpg)
-![Placeholder](./assets/images/travel-tracker-screenshot-2-key-features-and-how-it-works-sections.jpg)
-![Placeholder](./assets/images/travel-tracker-screenshot-3-egypt-photo-and-footer.jpg)
-![Placeholder](./assets/images/travel-tracker-screenshot-4-blank-bucket-list-and-map.jpg)
-![Placeholder](./assets/images/travel-tracker-screenshot-5-blank-bucketlist-and-footer.jpg)
-![Placeholder](./assets/images/travel-tracker-screenshot-6-weather-functionality.jpg)
-![Placeholder](./assets/images/travel-tracker-screenshot-7-calender-functionality.jpg)
-![Placeholder](./assets/images/travel-tracker-screenshot-8-forecast-functionaltiy.jpg)
-![Placeholder](./assets/images/travel-tracker-screenshot-9-dashboard-filled-in-and-with-another-map-view.jpg)
+![TravelTracker flavicon and header](./assets/images/travel-tracker-screenshot-flavicon-and-header.jpg)
+![Slideshow and popular this week section with featured bucketlist destinations](./assets/images/travel-tracker-screenshot-1-slider-and-popular-this-week.jpg)
+![keyfeatures and how it works section preview](./assets/images/travel-tracker-screenshot-2-key-features-and-how-it-works-sections.jpg)
+![Featured parallax with woman walking towards sphynx and application footer](./assets/images/travel-tracker-screenshot-3-egypt-photo-and-footer.jpg)
+![Blank bucketlist input form](./assets/images/travel-tracker-screenshot-4-blank-bucket-list-and-map.jpg)
+![Blank bucketlist input form part 2](./assets/images/travel-tracker-screenshot-5-blank-bucketlist-and-footer.jpg)
+![Image showing weather and weather icon](./assets/images/travel-tracker-screenshot-6-weather-functionality.jpg)
+![Showing Calender functionality of the app](./assets/images/travel-tracker-screenshot-7-calender-functionality.jpg)
+![Long term forcast cards](./assets/images/travel-tracker-screenshot-8-forecast-functionaltiy.jpg)
+![Example of dashboard inputs all filled in](./assets/images/travel-tracker-screenshot-9-dashboard-filled-in-and-with-another-map-view.jpg)
 
 ## Technologies Used
 - CSS
