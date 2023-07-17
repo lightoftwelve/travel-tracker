@@ -1,4 +1,5 @@
 $(document).ready(function () {
+  // Initialize the slider with specified options
   $('.slider').slider({
     indicators: true,
     height: 600,
@@ -6,14 +7,7 @@ $(document).ready(function () {
     interval: 6000
   });
 
-  $('select').formSelect();
-
-  $("#add_button").click(function () {
-    var selectedValue = $("#dropdown").val();
-    if (selectedValue) {
-      $("#list_area").append("<li class='collection-item'>" + selectedValue + "</li>");
-    }
-  });
+  $('select').formSelect(); // Initialize select dropdown
 
   // Load data from localStorage and append to list
   for (var i = 0; i < localStorage.length; i++) {
@@ -50,7 +44,6 @@ $(document).ready(function () {
     $(item).remove();
   });
 
-
   // Updated click function for the list items
   $("#list_area").on("click", ".collection-item", function () {
     var key = $(this).attr("data-key");
@@ -68,7 +61,6 @@ $(document).ready(function () {
     $("#completed").prop("checked", data.completed);
     $("#budget").val(data.budget);
     $("#category").val(data.category);
-
 
     // Update text fields and move labels immediately
     M.updateTextFields(); // materialize function
@@ -198,7 +190,6 @@ $(document).ready(function () {
   }
 
   // Calendar: Capture the start and end date of the plan
-
   // Capture today's date.
   var currentDate = new Date();
 
@@ -255,6 +246,7 @@ $(document).ready(function () {
 
 });
 
+// timeout for loading animation to help prevent FOUC. Special thank you to our teacher Sean Roshan and TA Serena Guo for their guidance in understanding and implementing this feature.
 setTimeout(() => {
   $('#loading').addClass('hidden');
   $('.lazyLoadContainer').removeClass('hidden');
