@@ -8,8 +8,6 @@
     --dpurple: #f4f7f9;
     --dark: #505050bb;
     --grey: #022831;
-    --hold: #B4D330;
-    text-decoration: none;
 }
 
 body {
@@ -17,10 +15,6 @@ body {
     font-size: 16px;
     margin: 0;
     padding: 0;
-}
-
-.custom-icon {
-    padding-left: 10px;
 }
 
 h1,
@@ -44,76 +38,33 @@ h3 {
     font-size: 24px;
 }
 
+/* Navigation */
 nav .brand-logo {
     font-size: 26px;
-}
-
-.lazyLoadContainer {
-    margin: 0;
-}
-
-.hidden {
-    display: none !important;
-}
-
-#loading {
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.adventureCol {
-    background-color: var(--dpurple);
-    height: 1360px;
-    margin: 0;
-    padding: 0 !important;
-    border-right: 1px solid var(--dark);
-}
-
-.dashboardCol {
-    padding: 0 !important;
-}
-
-.dashTitleContainers {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 20px;
-    background-color: var(--dpurple);
-    border-bottom: 1px solid var(--dark);
-}
-
-.dashboardTitle {
-    font-size: 20px;
-    padding: 0;
-}
-
-.buttonContainer {
-    display: flex;
-    gap: 10px;
-}
-
-.dashboardContents {
-    padding: 10px;
-}
-
-
-.hero-container {
-    width: 100%;
-    margin: 0 auto;
 }
 
 nav ul a:hover {
     background-color: var(--accent);
 }
 
+/* Slideshow */
 .slider .indicators .indicator-item.active {
     background-color: var(--accent);
     color: var(--dark);
 }
 
+/* Button on first slide */
+.get-started {
+    background-color: var(--main);
+    border: 1px solid var(--white);
+}
+
+.get-started a,
+.btn-large:hover {
+    background-color: var(--accent);
+}
+
+/* Second slide */
 .centerSlide {
     display: flex;
     justify-content: center;
@@ -145,6 +96,7 @@ nav ul a:hover {
     opacity: 0.5;
 }
 
+/* Quotation marks & "testimonial text" */
 .slideBackground p:before {
     top: 0;
     left: -35px;
@@ -155,6 +107,10 @@ nav ul a:hover {
     right: -35px;
     transform: scaleX(-1);
     /* flips quotation mark */
+}
+
+.caption h2 {
+    padding-bottom: 20px;
 }
 
 .denise-text {
@@ -177,40 +133,37 @@ nav ul a:hover {
     left: auto;
 }
 
-.caption h2 {
-    padding-bottom: 20px;
-}
-
-
-.get-started {
-    background-color: var(--main);
-    border: 1px solid var(--white);
-}
-
-.get-started a,
-.btn-large:hover {
-    background-color: var(--accent);
-}
-
+/* Popular This Week Section */
 .top-picks {
     margin: 50px;
     height: auto;
 }
 
+/* Card */
 .card,
 .card .card-image img {
+    position: relative;
     border-top-right-radius: 70px;
 }
 
+/* Image */
 .card .card-image {
-    position: relative;
     padding: 8px;
+}
+
+/* Title & Paragraph */
+.card-title {
+    bottom: 0;
+    right: 0;
+    text-align: right;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .card p {
     padding: 0 24px 24px 24px;
 }
 
+/* Button under popular this week */
 #card-action {
     text-align: center;
     padding: 16px 24px;
@@ -221,42 +174,15 @@ nav ul a:hover {
     cursor: pointer;
 }
 
-#card-action:hover {
-    background-color: var(--accent);
-}
-
 #card-action a {
     color: var(--white);
 }
 
-#card-action a:hover {
-    color: var(--white);
+#card-action:hover {
+    background-color: var(--accent);
 }
 
-.card-title {
-    bottom: 0;
-    right: 0;
-    text-align: right;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-}
-
-.card-panel {
-    margin: 0;
-
-}
-
-.keySection {
-    margin: 0;
-}
-
-.keyTitle {
-    font-size: 40px;
-}
-
-.keySubtitle {
-    margin: 0;
-}
-
+/* Key Features Section */
 .keyFeatures {
     position: relative;
     background-color: #00000011;
@@ -266,10 +192,7 @@ nav ul a:hover {
     align-items: center;
 }
 
-.keyFeaturesIcons {
-    margin-top: 70px;
-}
-
+/* Titles on image */
 .travelTrackerKeyFeatures {
     position: absolute;
     top: 30px;
@@ -277,8 +200,26 @@ nav ul a:hover {
     color: var(--black);
 }
 
+.keySubtitle {
+    margin: 0;
+}
+
+.keyTitle {
+    font-size: 40px;
+}
+
+.keyFeaturesIcons {
+    margin-top: 70px;
+}
+
+/* How it works section */
 .howItWorks {
     margin: 50px 0;
+}
+
+/* Egypt Parallax and word loop decoration */
+.egyptPhoto {
+    margin: 0;
 }
 
 .parallax-container {
@@ -289,31 +230,6 @@ nav ul a:hover {
     height: 650px;
     position: relative;
     z-index: 99;
-}
-
-.egyptPhoto {
-    margin: 0;
-}
-
-.egyptPhotoTitle {
-    color: var(--white);
-    font-size: 50px;
-}
-
-.wordLoopDecoration {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
-
-.word-loop-container {
-    padding-top: 20px;
-    height: auto;
-    margin: 0;
-    width: 100%;
-    font-size: 100px;
-    color: #00000030;
 }
 
 .word-loop {
@@ -334,45 +250,38 @@ nav ul a:hover {
     }
 }
 
-.flex-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+/* Bucketlist.html Start */
 
-.item-text {
-    display: block;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    width: 100%;
-}
-
-.parent-class {
-    display: flex;
-}
-
-div.input-field.col.s12 {
-    padding: 0;
+/* Lazy loading css */
+.lazyLoadContainer {
     margin: 0;
 }
 
+.hidden {
+    display: none !important;
+}
+
+#loading {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* My Adventures Column */
+.adventureCol {
+    background-color: var(--dpurple);
+    height: 1360px;
+    margin: 0;
+    padding: 0 !important;
+    border-right: 1px solid var(--dark);
+}
+
+/* List Area */
 #list_area {
     max-height: 1300px;
     overflow-y: auto;
-}
-
-/* list area nav */
-#list_area::-webkit-scrollbar {
-    width: 10px;
-}
-
-#list_area::-webkit-scrollbar-track {
-    background: #f1f1f1;
-}
-
-#list_area::-webkit-scrollbar-thumb {
-    background: var(--main);
 }
 
 ul#list_area.collection {
@@ -396,52 +305,76 @@ li.collection-item {
     align-items: center;
 }
 
+/* Hide overflow */
+.item-text {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+}
+
+/* List Area scroll bar styling */
+#list_area::-webkit-scrollbar {
+    width: 10px;
+}
+
+#list_area::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+#list_area::-webkit-scrollbar-thumb {
+    background: var(--main);
+}
+
+/* Planning Column */
+.dashboardCol {
+    padding: 0 !important;
+}
+
+.dashTitleContainers {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: var(--dpurple);
+    border-bottom: 1px solid var(--dark);
+}
+
+.dashboardTitle {
+    font-size: 20px;
+    padding: 0;
+}
+
+.dashboardContents {
+    padding: 10px;
+}
+
+.buttonContainer {
+    display: flex;
+    gap: 10px;
+}
+
+/* Notes height */
 .initial-height {
     height: 230px !important;
     border: 1px solid #ccc !important;
     padding: 10px !important;
 }
 
-.weatherTitle {
-    margin-top: 10px;
-    display: flex;
-    align-items: left;
-    justify-content: center;
-    width: 100%;
-}
-
-.weather-data {
-    font-size: small;
-}
-
-.weather-stats {
-    display: flex;
-    align-items: left;
-    justify-content: left;
-    flex-direction: column;
-}
-
-.weather-info {
-    font-weight: bold;
-    padding: 0 !important;
-}
-
-.align-items-stretch {
-    padding: 0;
-    margin: 0;
-}
-
+/* Checkboxes */
 .checkboxes {
     display: flex;
     justify-content: left;
     align-items: center;
 }
 
-
+/* Buttons */
 .btn,
 .custom-button,
 .searchBtn,
-#save_button {
+#save_button,
+#refresh_button {
     padding: 10px 10px;
     background-color: rgba(255, 255, 255, 0.879);
     border: 1px solid var(--main);
@@ -454,11 +387,13 @@ li.collection-item {
 .custom-button:hover,
 .searchBtn:hover,
 #save_button:hover,
-.delete-button:hover {
+.delete-button:hover,
+#refresh_button:hover {
     background-color: var(--main);
     color: var(--white);
 }
 
+/* Dropdown styling */
 .select-wrapper,
 input.select-dropdown,
 .dropdown-content li,
@@ -469,23 +404,21 @@ input.select-dropdown,
     font-size: small;
 }
 
-input.select-dropdown.dropdown-trigger,
-.month-prev,
-.month-next,
-.datepicker-table,
-.datepicker-footer {
-    margin: 0;
+/* Map and contents (search, suggestions & styling select) */
+/* Map container */
+#map {
+    height: 400px;
+    width: 100%;
 }
 
-.month-prev,
-.month-next,
-.datepicker-table,
-.datepicker-footer,
-.datepicker-container {
-    background-color: rgba(255, 255, 255, 0.879);
-
+/* Map style select dropdown */
+#style-select {
+    width: 200px;
+    padding: 8px;
+    font-size: 14px;
 }
 
+/* Search Container */
 .search-container,
 input.select-dropdown.dropdown-trigger {
     position: relative;
@@ -498,11 +431,6 @@ input.select-dropdown.dropdown-trigger {
     font-size: small;
 }
 
-.datepicker-cancel,
-.datepicker-done {
-    color: var(--main);
-}
-
 #search {
     margin: 0;
     padding-left: 10px;
@@ -511,23 +439,39 @@ input.select-dropdown.dropdown-trigger {
     background-color: rgba(255, 255, 255, 0.879);
 }
 
+#search-button {
+    margin-right: 10px;
+}
+
+.searchBtn:focus {
+    color: var(--white);
+    background-color: #04556ece;
+}
+
+
+/* Suggestions container */
+#suggestions {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1;
+    width: 80%;
+    max-height: 200px;
+    overflow-y: auto;
+    background-color: var(--white);
+    border: 1px solid #ccc;
+    border-top: none;
+    display: none;
+}
+
+#suggestions.visible {
+    display: block;
+}
+
 .suggestions-container {
     margin: 0;
     visibility: visible;
     position: relative;
-}
-
-#suggestions {
-    width: 75%;
-    background-color: #f5f5f5;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    position: absolute;
-    z-index: 1;
-    margin: 0;
-    padding-left: 2px;
-    color: var(--main);
-    background-color: rgba(255, 255, 255, 0.879);
 }
 
 #suggestions .suggestion {
@@ -549,20 +493,32 @@ input.select-dropdown.dropdown-trigger {
     align-items: center;
 }
 
-#search-button {
-    margin-right: 10px;
-}
-
 #style-select {
     width: 200px;
     padding: 8px;
     font-size: 14px;
 }
 
-/* Style for suggestion bar ends here */
-.searchBtn:focus {
-    color: var(--white);
-    background-color: #04556ece;
+/* Calendar Styling */
+input.select-dropdown.dropdown-trigger,
+.month-prev,
+.month-next,
+.datepicker-table,
+.datepicker-footer {
+    margin: 0;
+}
+
+.month-prev,
+.month-next,
+.datepicker-table,
+.datepicker-footer,
+.datepicker-container {
+    background-color: rgba(255, 255, 255, 0.879);
+}
+
+.datepicker-cancel,
+.datepicker-done {
+    color: var(--main);
 }
 
 .datepicker-date-display {
@@ -578,53 +534,14 @@ input.select-dropdown.dropdown-trigger {
     background-color: var(--accent);
 }
 
-
-footer.page-footer {
-    background-color: var(--main);
-    margin: 0;
+/* Weather Styling */
+.weather-data {
+    font-size: small;
 }
 
-/* Map container */
-#map {
-    height: 400px;
-    width: 100%;
+.weather-info {
+    padding: 0 !important;
 }
-
-/* Map style select dropdown */
-#style-select {
-    width: 200px;
-    padding: 8px;
-    font-size: 14px;
-}
-
-/* Suggestions container */
-#suggestions {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    z-index: 1;
-    width: 100%;
-    max-height: 200px;
-    overflow-y: auto;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-top: none;
-    display: none;
-}
-
-#suggestions.visible {
-    display: block;
-}
-
-.suggestion {
-    padding: 8px;
-    cursor: pointer;
-}
-
-.suggestion:hover {
-    background-color: #f4f4f4;
-}
-
 
 .data {
     font-size: 12px;
@@ -663,6 +580,13 @@ footer.page-footer {
     font-size: 9px;
 }
 
+/* Footer */
+footer.page-footer {
+    background-color: var(--main);
+    margin: 0;
+}
+
+/* Media Queries */
 @media only screen and (max-width : 600px) {
     .slider .slides li .slideBackground {
         width: 100%;

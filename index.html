@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="TravelTracker is a web application that empowers users to create and manage their travel itineraries and bucketlists. Explore destinations, plan activities, and stay organized with features like an interactive map, calendar-based planning, and weather information. Start planning your dream vacations with TravelTracker today.">
     <title>Home | TravelTracker</title>
     <link rel="icon" type="image/x-icon" href="assets/images/travel-tracker-flavicon.png" />
     <link rel="stylesheet" href="assets/css/reset.css">
@@ -20,7 +22,8 @@
                 <div id="header-container"></div>
             </nav>
         </header>
-        <!-- Hero Section -->
+
+        <!-- Hero Slideshow Section -->
         <section class="hero">
             <div class="slider">
                 <ul class="slides">
@@ -35,7 +38,7 @@
                         </div>
                     </li>
                     <li class="centerSlide">
-                        <img src="assets/images/canyon.jpg" alt="two people watching hot air balloons at sunrise">
+                        <img src="assets/images/canyon.jpg" alt="a beautiful canyon view deep into a valley">
                         <div class="slideBackground">
                             <div class="caption">
                                 <h2>Simplify Your Journey, Maximize Your Memories</h2>
@@ -54,7 +57,7 @@
                     </li>
                     <li class="rightSlide">
                         <img src="assets/images/relaxing-beach.jpg"
-                            alt="a girl on a road trip sitting on a car with a map">
+                            alt="a woman lying on the beach under palm trees in a swimsuit and a hat over her face near the ocean">
                         <div class="slideBackground">
                             <div class="caption">
                                 <h2>Dream, Discover, and Create: TravelTracker Makes it Easy</h2>
@@ -69,9 +72,7 @@
             </div>
         </section>
 
-
-
-        <!-- Popular this week -->
+        <!-- Popular This Week Section -->
         <section class="top-picks">
             <h2>Popular This Week</h2>
             <div class="row slick-slider">
@@ -140,14 +141,15 @@
             </div>
         </section>
 
-        <!-- Key Features -->
+        <!-- Key Features Section -->
         <section class="keyFeatures">
+            <!-- photo -->
             <div class="row">
                 <div class="col s12 m6">
                     <div class="parallax-container">
                         <div class="parallax">
                             <img src="assets/images/sitting-on-van-on-roadtrip.jpg"
-                                alt="two men sitting on top of a van">
+                                alt="two men sitting on top of a van laughing at sunset">
                         </div>
                         <div class="travelTrackerKeyFeatures">
                             <p class="keySubtitle">TravelTracker</p>
@@ -155,6 +157,7 @@
                         </div>
                     </div>
                 </div>
+                <!-- keypoints -->
                 <div class="col s12 m6">
                     <div class="keyFeaturesIcons">
                         <div class="row">
@@ -201,12 +204,10 @@
             </div>
         </section>
 
-
-        <!-- How it Works -->
+        <!-- How It Works Section with Icons -->
         <section class="howItWorks">
             <div class="container">
                 <div class="section">
-                    <!--   Icon Section   -->
                     <div class="row">
                         <div class="col s12 m4">
                             <div class="icon-block">
@@ -221,7 +222,6 @@
                                     sky's the limit!</p>
                             </div>
                         </div>
-
                         <div class="col s12 m4">
                             <div class="icon-block">
                                 <h2 class="center black-text"><i class="material-icons">playlist_add</i></h2>
@@ -235,7 +235,6 @@
                                 </p>
                             </div>
                         </div>
-
                         <div class="col s12 m4">
                             <div class="icon-block">
                                 <h2 class="center black-text"><i class="material-icons">flight_takeoff</i></h2>
@@ -255,7 +254,6 @@
             </div>
         </section>
 
-
         <!-- Decorative Photo -->
         <section class="egyptPhoto">
             <div class="parallax-container valign-wrapper">
@@ -269,11 +267,11 @@
                     </div>
                 </div>
                 <div class="parallax"><img src="assets/images/walking-towards-sphynx-in-egypt.jpg"
-                        alt="person walking towards sphynx in Egpyt"></div>
+                        alt="person walking towards sphynx in Egypt with Great Pyramid in the background"></div>
             </div>
         </section>
 
-        <!-- Contact Us -->
+        <!-- Contact Us Section -->
         <!-- <section>
             <div class="container">
                 <div class="section">
@@ -306,7 +304,6 @@
         <footer class="page-footer">
             <div class="container">
                 <div class="row">
-
                     <div class="col l4 s12">
                         <h3 class="white-text">The Team A-Z</h3>
                         <ul>
@@ -341,8 +338,6 @@
                             and enhance the user experience.
                         </p>
                     </div>
-
-
                 </div>
             </div>
             <div class="footer-copyright">
@@ -352,7 +347,7 @@
             </div>
         </footer>
 
-
+        <!-- scripts -->
         <script>
             $(document).ready(function () {
                 $('#header-container').load('header.html');

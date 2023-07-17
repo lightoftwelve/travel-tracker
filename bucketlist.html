@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Explore, Create, and Achieve with TravelTracker's Bucketlist Dashboard. Map out your dream destinations, track your progress, and turn your travel aspirations into unforgettable experiences. Plan, organize, and share your bucketlist with ease. Start your journey today with TravelTracker.">
     <title>Bucketlist | TravelTracker</title>
     <link rel="icon" type="image/x-icon" href="assets/images/travel-tracker-flavicon.png" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -20,6 +22,7 @@
         </nav>
     </header>
     <main>
+        <!-- Blue loading spinner on page load -->
         <div id="loading">
             <div class="preloader-wrapper big active">
                 <div class="spinner-layer spinner-blue-only">
@@ -36,6 +39,7 @@
             </div>
         </div>
         <div class="row hidden lazyLoadContainer">
+            <!-- My Adventures list that holds appended bucketlists -->
             <div class="col s12 m3 adventureCol">
                 <div class="dashTitleContainers">
                     <span class="dashboardTitle">My Adventures</span>
@@ -92,14 +96,16 @@
                     <!-- List items are appended here -->
                 </ul>
             </div>
-            <!-- Second column -->
+            <!-- Planning column where users fill out the input forms for their bucketlists -->
             <div class="col s12 m9 dashboardCol">
                 <div class="dashTitleContainers">
                     <span class="dashboardTitle">Planning</span>
                     <div class="buttonContainer">
+                        <!-- Save button -->
                         <button id="save_button" class="btn waves-effect waves-light" type="submit" name="action">Save
                             <i class="material-icons right">save</i>
                         </button>
+                        <!-- Refresh Button -->
                         <button id="refresh_button" class="btn waves-effect waves-light" type="submit"
                             name="action">Refresh
                             <i class="material-icons right">autorenew</i>
@@ -107,11 +113,12 @@
                     </div>
                 </div>
 
-                <!-- Start of map code for html -->
                 <div class="dashboardContents">
+                    <!-- Map Code -->
                     <div id='map' style='height: 350px;'>
                         <div class="search-container row valign-wrapper">
                             <div class="input-field col s8 m9">
+                                <!-- On map search bar -->
                                 <input type="text" id="search" class="search-bar" placeholder="Enter a location"
                                     oninput="fetchSuggestions()">
                                 <div class="suggestions-container">
@@ -120,9 +127,11 @@
                             </div>
                             <div class="col s4 m3">
                                 <div class="button-select-container">
+                                    <!-- On map search button -->
                                     <button id="search-button" class="searchBtn">
                                         <i class="material-icons">search</i>
                                     </button>
+                                    <!-- Select a map style -->
                                     <div id="style-select-container">
                                         <select id="style-select">
                                             <option value="mapbox://styles/mapbox/satellite-streets-v12">SATELLITE
@@ -137,7 +146,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- End of map code for html -->
+                    <!-- Start of bucketlist input forms -->
                     <div class="row d-flex align-items-stretch">
                         <div class="col s12 m8 weatherBucketTitle">
                             <div class="input-field">
@@ -153,17 +162,17 @@
                             </div>
                             <div class="input-field">
                                 <textarea id="memos" class="materialize-textarea initial-height"></textarea>
-                                <label for="memos" class="active">Plans</label>
+                                <label for="memos" class="active">Notes</label>
                             </div>
                         </div>
-
+                        <!-- Current weather div -->
                         <div class="col s12 m4 weatherChecks">
                             <div class="row">
                                 <div class="col s12 weatherCard">
                                     <div id="weather" class="card weather"></div>
                                 </div>
                             </div>
-
+                            <!-- Tickets needed and completed checkboxes -->
                             <div class="col s12 checkboxesContainer">
                                 <div class="tickets">
                                     <p>
@@ -184,7 +193,7 @@
                             </div>
                         </div>
                     </div>
-
+                    <!-- Calender start and end date inputs -->
                     <div class="row s12">
                         <div class="input-field col s6">
                             <input type="text" id="start-date" class="datepicker">
@@ -197,7 +206,7 @@
                     </div>
                     <div id="start-date-history">
                     </div>
-
+                    <!-- Budget input and toggle to hide and view budget-->
                     <div class="input-field">
                         <input id="budget" type="number">
                         <label for="budget" class="active">Budget</label>
@@ -208,35 +217,36 @@
                             <span>Show/Hide Budget</span>
                         </label>
                     </p>
+                    <!-- Select a category dropdown -->
                     <div class="input-field">
                         <select id="category">
                             <option value="" disabled selected>Choose Category</option>
-                            <option value="activities">Activities</option>
-                            <option value="adventure">Adventure</option>
-                            <option value="beach">Beach</option>
-                            <option value="camping">Camping</option>
-                            <option value="cultural-events">Cultural Events</option>
-                            <option value="education">Education</option>
-                            <option value="festivals-events">Festivals and Events</option>
-                            <option value="fitness">Fitness</option>
-                            <option value="food-drinks">Food and Drinks</option>
-                            <option value="hiking">Hiking</option>
-                            <option value="historical-landmarks">Historical Landmarks</option>
-                            <option value="islands">Islands</option>
-                            <option value="museums-art-galleries">Museums & Art Galleries</option>
-                            <option value="natural-wonders">Natural Wonders</option>
-                            <option value="nightlife">Nightlife</option>
-                            <option value="outdoors">Outdoors</option>
-                            <option value="restaurants">Restaurants</option>
-                            <option value="road-trips">Road Trips</option>
-                            <option value="skills">Skills</option>
-                            <option value="spas">Spas</option>
-                            <option value="sports">Sports</option>
-                            <option value="travel-destinations">Travel Destinations</option>
-                            <option value="volunteer-work">Volunteer Work</option>
-                            <option value="water-activities">Water Activities</option>
-                            <option value="wellness-activities">Wellness Activities</option>
-                            <option value="wildlife">Wildlife</option>
+                            <option value="activities">ACTIVITIES</option>
+                            <option value="adventure">ADVENTURE</option>
+                            <option value="beach">BEACH</option>
+                            <option value="camping">CAMPING</option>
+                            <option value="cultural-events">CULTURAL EVENTS</option>
+                            <option value="education">EDUCATION</option>
+                            <option value="festivals-events">FESTIVALS AND EVENTS</option>
+                            <option value="fitness">FITNESS</option>
+                            <option value="food-drinks">FOOD AND DRINKS</option>
+                            <option value="hiking">HIKING</option>
+                            <option value="historical-landmarks">HISTORICAL LANDMARKS</option>
+                            <option value="islands">ISLANDS</option>
+                            <option value="museums-art-galleries">MUSEUMS & ART GALLERIES</option>
+                            <option value="natural-wonders">NATURAL WONDERS</option>
+                            <option value="nightlife">NIGHTLIFE</option>
+                            <option value="outdoors">OUTDOORS</option>
+                            <option value="restaurants">RESTAURANTS</option>
+                            <option value="road-trips">ROAD TRIPS</option>
+                            <option value="skills">SKILLS</option>
+                            <option value="spas">SPAS</option>
+                            <option value="sports">SPORTS</option>
+                            <option value="travel-destinations">TRAVEL DESTINATIONS</option>
+                            <option value="volunteer-work">VOLUNTEER WORK</option>
+                            <option value="water-activities">WATER ACTIVITIES</option>
+                            <option value="wellness-activities">WELLNESS ACTIVITIES</option>
+                            <option value="wildlife">WILDLIFE</option>
                         </select>
                         <label for="category">Category</label>
                     </div>
@@ -244,11 +254,10 @@
             </div>
         </div>
     </main>
-
+    <!-- footer -->
     <footer class="page-footer">
         <div class="container">
             <div class="row">
-
                 <div class="col l4 s12">
                     <h3 class="white-text">The Team A-Z</h3>
                     <ul>
@@ -265,25 +274,13 @@
                 <div class="col l8 s12">
                     <h3 class="white-text">Company Bio</h3>
                     <p class="grey-text text-lighten-4">
-                        We are a team of four Fullstack developer students from the University of Toronto
-                        and
-                        edx,
-                        working tirelessly on this project as though it's our full-time job. The
-                        TravelTracker
-                        app
-                        is
-                        the
-                        result of our shared passion for coding and making travel planning accessible and
-                        efficient
-                        for
-                        all. Any support towards this project is highly appreciated and will help us
-                        continue to
-                        develop
-                        and enhance the user experience.
+                        We are a team of four Fullstack developer students from the University of Toront and edx,
+                        working tirelessly on this project as though it's our full-time job. The TravelTracker app is
+                        the result of our shared passion for coding and making travel planning accessible and efficient
+                        for all. Any support towards this project is highly appreciated and will help us continue to
+                        develop and enhance the user experience.
                     </p>
                 </div>
-
-
             </div>
         </div>
         <div class="footer-copyright">
@@ -293,13 +290,12 @@
         </div>
     </footer>
 
+    <!-- scripts -->
     <script>
         $(document).ready(function () {
             $('#header-container').load('header.html');
         });
     </script>
-
-    <!-- Script for mapbox attached here. At the next few lines -->
     <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
     <script src='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js'></script>
     <script
