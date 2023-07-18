@@ -72,3 +72,4 @@ The main license for this project is not available at this time.
 
 The Materialize library used in this project is licensed under the MIT License.
 Please see the [LICENSE-Materialize](LICENSE-Materialize.txt) file for more information.
+
